@@ -58,6 +58,11 @@ body {
     font-weight: bold;
 }
 
+.loginbutton:hover{
+    background-color: #02784e;
+    cursor: pointer;
+}
+
 hr {
     margin-top: 10px;
     border: 1px solid #ddd;
