@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AstreonApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Astreon Study Buddy - Landing Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="../static/javascript/landing.js"></script>
+  <link rel="stylesheet" href="../static/css/landing.css">
+</head>
+<body class="bg-white font-sans flex flex-col min-h-screen" ng-controller="LandingPageController">
+
+  <!-- Header -->
+  <header class="bg-white py-4 px-6 border-b border-gray-200">
+    <div class="max-w-80xl flex items-center justify-between">
+      <!-- Logo and Site Name -->
+      <div class="flex items-center space-x-3">
+        <img src="../static/imgs/Astreon.png" alt="Astreon Logo" class="h-6 w-6">
+        <h1 class="text-xl font-semibold text-gray-900">Astreon Study Buddy</h1>
+      </div>
+      <!-- Login and Sign In Buttons -->
+      <div class="flex space-x-4">
+        <button class="bg-green-600 text-white px-4 py-2 rounded-[12px] font-semibold hover:bg-green-700" ng-click="login()">Login</button>
+        <button class="bg-[#F5F0E5] text-gray-700 px-4 py-2 rounded-[12px] font-semibold hover:bg-gray-200" ng-click="signUp()">Sign up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Landing Section -->
+  <main class="flex-grow flex items-center justify-center p-6 bg-white">
+    <div class="w-full max-w-full rounded-lg overflow-hidden shadow-lg">
+      <!-- Background Image -->
+      <div class="relative h-[calc(77vh-77px)]">
+        <img src="../static/imgs/welcome.png" alt="Astronaut reading" class="w-full h-full object-cover">
+        <!-- Gradient Overlay and Text Content -->
+        <div class="absolute inset-0 flex flex-col justify-end bg-gradient-to-r from-black/10 to-black/40 p-6 md:p-12 lg:p-16">
+          <div class="text-white space-y-2">
+            <h2 class="text-3xl md:text-4xl font-extrabold">Get instant study help</h2>
+            <p class="text-base md:text-lg font-medium">Upload your study materials and generate quizzes, flashcards, and more. Try it today!</p>
+          </div>
+          <button class="mt-4 w-max bg-green-600 text-white text-sm font-semibold py-2 px-4 rounded-[12px] hover:bg-green-700" ng-click="tryItNow()">Try it now</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-[#F5F0E5] text-[#A1824A] text-sm font-bold py-8 md:py-10">
+    <div class="flex justify-center space-x-8 mb-4">
+      <a href="#" class="hover:underline" ng-click="goToAbout()">About</a>
+      <a href="#" class="hover:underline" ng-click="goToCareers()">Careers</a>
+      <a href="#" class="hover:underline" ng-click="goToBlog()">Blog</a>
+      <a href="#" class="hover:underline" ng-click="goToHelpCenter()">Help Center</a>
+    </div>
+    <p class="text-center text-base md:text-lg">&copy; 2024 Astreon Study Buddy</p>
+  </footer>
+
+</body>
+</html> 
