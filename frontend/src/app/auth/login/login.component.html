@@ -1,0 +1,41 @@
+<header class="bg-white py-4 border-b border-[#E5E8EB]">
+  <div class="max-w-7xl mx-auto px-4 flex items-center">
+    <img src="../../static/imgs/Astreon.png" alt="Astreon Logo" class="h-25 w-25 mr-4">
+    <h1 class="text-lg font-bold text-[#1C170D]">Astreon Study Buddy</h1>
+  </div>
+</header>
+
+<main class="flex-grow flex justify-center items-center">
+  <div class="w-full max-w-md bg-white rounded-lg p-6">
+    <h2 class="text-center text-2xl font-bold text-[#1C170D] mb-4 tracking-wider">
+      Welcome back to Astreon Study Buddy
+    </h2>
+
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <label class="block text-[#1C170D] font-semibold mb-1" for="username">Username</label>
+      <input id="username" type="text" placeholder="Email or username"
+             class="input-field" [(ngModel)]="user.username" name="username" required>
+
+      <label class="block text-[#1C170D] font-semibold mb-1" for="password">Password</label>
+      <input id="password" type="password" placeholder="Password"
+             class="input-field" [(ngModel)]="user.password" name="password" required>
+
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center">
+          <input id="remember" type="checkbox" class="text-[#009963] rounded focus:ring-[#009963]" [(ngModel)]="user.rememberMe" name="rememberMe">
+          <label for="remember" class="ml-2 text-[#1C170D]">Remember me</label>
+        </div>
+        <a href="#" class="text-[#A1824A] hover:underline">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="login-button" [disabled]="loginForm.invalid">Log in</button>
+
+      <div class="flex items-center mb-4">
+        <span class="flex-grow border-t border-[#A1824A]"></span>
+        <span class="mx-3 text-[#A1824A]">Or</span>
+        <span class="flex-grow border-t border-[#A1824A]"></span> <!-- Closing span tag added here -->
+      </div>
+    </form>
+  </div>
+</main>
+

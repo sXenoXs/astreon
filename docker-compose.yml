@@ -1,0 +1,42 @@
+services:
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./backend/astreon_project/.env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    network_mode: host
+
+  backend:
+    build: ./backend
+    image: astreon_project
+    container_name: backend-container
+    command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/astreon_project/.env
+    volumes:
+      - /home/berna/astreon/backend:/usr/src/app
+    environment: 
+      - DJANGO_SETTINGS_MODULE=astreon_project.settings
+    network_mode: host
+    depends_on:
+      - db
+  
+  frontend:
+      image: frontend
+      container_name: frontend-container
+      build:
+        context: ./frontend
+      network_mode: host
+      ports:
+        - "80:80"
+      
+      depends_on:
+        - backend
+
+volumes:
+  db_data:

@@ -1,0 +1,116 @@
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.Headercontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.titleheader {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.logo {
+    height: 50px; /* Adjust as needed */
+}
+
+.logindiv {
+    margin-right: 20px;
+}
+
+.loginbutton {
+    background-color: #009963;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto;
+}
+
+.loginbutton:hover {
+    background-color: #02784e;
+}
+
+hr {
+    width: 80%;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+form {
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+.form-group {
+    margin: 15px 0;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.signup-btn {
+    background-color: #009963;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin: auto;
+}
+
+.signup-btn:hover {
+    background-color: #02784e;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #F5F0E5;
+    color: #A1824A;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.pFooter {
+    margin: 0 15px;
+    display: inline-block;
+}
+

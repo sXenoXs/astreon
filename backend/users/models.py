@@ -7,8 +7,6 @@ class RoleType(models.TextChoices):
     STUDENT = 'student'
     TEACHER = 'teacher'
 
-
-
 class Role(models.Model):
     roleName = models.CharField(max_length=50,choices=RoleType.choices, default=RoleType.STUDENT)
     description = models.TextField()
