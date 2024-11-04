@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AstreonApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Astreon Study Buddy - Learning Modes">
+  <meta name="keywords" content="Astreon, Study Buddy, Learning Modes, Flashcards, Memorization, Matching Type">
+  <meta property="og:title" content="Astreon Study Buddy - Learning Modes">
+  <meta property="og:description" content="Study your flashcards in a simple, easy-to-use interface.">
+  <title>Astreon Study Buddy - Learning Modes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="../static/javascript/course.js"></script>
+  <link rel="stylesheet" href="../static/css/course.css">
+</head>
+<body class="bg-[#FFFFFF] text-[#1C170D] font-sans" ng-controller="LearningModesController">
+
+  <!-- Header -->
+  <header class="flex items-center justify-between p-4 bg-[#FFFFFF] border-b border-[#E5E8EB]">
+    <div class="flex items-center gap-4">
+      <!-- Logo and Name -->
+      <img src="../static/imgs/Astreon.png" alt="Astreon Logo" class="h-25 w-25">
+      <a href="/home" class="text-xl font-semibold">Astreon Study Buddy</a>
+    </div>
+
+    <!-- Right Header Elements -->
+    <div class="flex items-center gap-4">
+      <!-- Search Bar -->
+      <div class="relative">
+        <input 
+          type="text" 
+          placeholder="Search" 
+          class="hidden lg:block w-0 transition-all duration-300 focus:w-48 bg-[#F5F0E5] px-10 py-2 rounded-full border border-[#E5E8EB] focus:outline-none text-[#A1824A] placeholder-[#A1824A]"
+        >
+        <!-- Search Icon -->
+        <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-[#A1824A]">
+          <img src="../static/imgs/search.png" alt="Notifications" class="h-5 w-5">
+        </span>
+      </div>
+
+      <!-- New Study Session Button -->
+      <button ng-click="openModal()" class="px-4 py-2 text-white bg-[#36A86C] rounded-full hover:bg-[#1C170D]">New Study Session</button>
+
+      <!-- Notification, Calendar, Profile Icons -->
+      <button class="p-2 rounded-full hover:bg-[#E8DECF]" aria-label="Notifications">
+        <img src="../static/imgs/notification.png" alt="Notifications" class="h-6 w-6">
+      </button>
+      <button class="p-2 rounded-full hover:bg-[#E8DECF]" aria-label="Calendar">
+        <img src="../static/imgs/calendar.png" alt="Calendar" class="h-6 w-6">
+      </button>
+      <button class="p-2 rounded-full hover:bg-[#E8DECF]" aria-label="Profile">
+        <img src="../static/imgs/profile.png" alt="Profile" class="h-9 w-9">
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="flex">
+    <!-- Sidebar Navigation -->
+    <aside class="w-1/5 bg-[#FFFFFF] p-6">
+      <h2 class="text-xl font-bold mb-4">Astreon</h2>
+      <nav>
+        <ul class="space-y-2">
+          <li><a href="#" class="flex items-center gap-2 p-3 border border-[#E8DECF] rounded-[8px] text-[#1C170D] hover:bg-[#F5F0E5]"><img src="../static/imgs/aichat.png" alt="AI Study" class="h-6 w-6"> AI Study</a></li>
+          <li><a href="#" class="flex items-center gap-2 p-3 border border-[#E8DECF] rounded-[8px] text-[#1C170D] hover:bg-[#F5F0E5]"><img src="../static/imgs/sessions.png" alt="Sessions" class="h-6 w-6"> Sessions</a></li>
+          <li><a href="#" class="flex items-center gap-2 p-3 border border-[#E8DECF] rounded-[8px] text-[#1C170D] hover:bg-[#F5F0E5]"><img src="../static/imgs/quiz.png" alt="Quiz Me" class="h-6 w-6"> Quiz Me</a></li>
+          <li><a href="#" class="flex items-center gap-2 p-3 border border-[#E8DECF] rounded-[8px] text-[#1C170D] hover:bg-[#F5F0E5]"><img src="../static/imgs/cards.png" alt="Flashcards" class="h-6 w-6"> Flashcards</a></li>
+          <li><a href="#" class="flex items-center gap-2 p-3 border border-[#E8DECF] rounded-[8px] text-[#1C170D] hover:bg-[#F5F0E5]"><img src="../static/imgs/learn_mode.png" alt="Learning Modes" class="h-6 w-6"> Learning Modes</a></li>
+          <li><a href="#" class="flex items-center gap-2 p-3 bg-[#F5F0E5] border border-[#E8DECF] rounded-[8px] text-[#1C170D] font-bold"><img src="../static/imgs/course.png" alt="Course Subject" class="h-6 w-6"> Course Subject</a></li>
+        </ul>
+      </nav>
+      <div class="mt-6 space-y-2">
+        <button class="flex items-center gap-2 p-3 bg-[#FFFFFF] rounded-[8px] text-[#1C170D]"><img src="../static/imgs/help.png" alt="Help" class="h-6 w-6"> Help</button>
+        <button class="flex items-center gap-2 p-3 bg-[#FFFFFF] rounded-[8px] text-[#1C170D]"><img src="../static/imgs/feedback.png" alt="Feedback" class="h-6 w-6"> Feedback</button>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 p-8 bg-white">
+      <div class="flex items-center gap-4 mb-4">
+        <button ng-click="goBack()" class="text-2xl text-[#A1824A]" aria-label="Go Back">&#8592;</button>
+        <h1 class="text-2xl font-semibold text-[#1C170D]">Course Subject</h1>
+      </div>
+
+      <hr class="border-[#1C170D] mb-6">
+      
+      <!-- Course Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Biology Card -->
+        <div class="bg-[#F5F0E5] border border-[#1C170D] rounded-lg overflow-hidden relative">
+          <!-- Kebab Menu -->
+          <div class="absolute top-2 right-2">
+            <button class="p-1 rounded-full hover:bg-[#E8DECF]" ng-click="toggleMenu('biology')">
+              <svg class="w-6 h-6 text-[#A1824A]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div ng-show="isMenuOpen('biology')" class="absolute right-0 mt-1 w-40 bg-white border border-[#E5E8EB] rounded-lg shadow-lg">
+              <ul>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">View Details</li>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">Edit</li>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">Delete</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Top Section -->
+          <div class="p-4">
+            <h2 class="text-xl font-semibold text-[#1C170D]">Biology</h2>
+            <p class="text-[#A1824A]">15 Students</p>
+          </div>
+          
+          <!-- Divider between Top and Bottom sections -->
+          <div class="bg-[#FFFFFF]">
+            <!-- Bottom Section -->
+            <div class="p-4">
+              <img src="../static/imgs/subject.png" alt="Biology" class="w-full rounded-lg mb-4">
+              <p class="text-[#A1824A] mb-4">Dr. Alice Lee</p>
+              <button class="w-full py-2 text-white bg-[#36A86C] rounded-lg hover:bg-[#1C170D]">Start</button>
+            </div>
+          </div>
+        </div>
+        <!-- Mathematics Card -->
+        <div class="bg-[#F5F0E5] border border-[#1C170D] rounded-lg overflow-hidden relative">
+          <!-- Kebab Menu -->
+          <div class="absolute top-2 right-2">
+            <button class="p-1 rounded-full hover:bg-[#E8DECF]" ng-click="toggleMenu('mathematics')">
+              <svg class="w-6 h-6 text-[#A1824A]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div ng-show="isMenuOpen('mathematics')" class="absolute right-0 mt-1 w-40 bg-white border border-[#E5E8EB] rounded-lg shadow-lg">
+              <ul>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">View Details</li>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">Edit</li>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">Delete</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Top Section -->
+          <div class="p-4">
+            <h2 class="text-xl font-semibold text-[#1C170D]">Mathematics</h2>
+            <p class="text-[#A1824A]">14 Students</p>
+          </div>
+          
+          <!-- Divider between Top and Bottom sections -->
+          <div class="bg-[#FFFFFF]">
+            <!-- Bottom Section -->
+            <div class="p-4">
+              <img src="../static/imgs/subject.png" alt="Mathematics" class="w-full rounded-lg mb-4">
+              <p class="text-[#A1824A] mb-4">Mr. Edward Tee</p>
+              <button class="w-full py-2 text-white bg-[#36A86C] rounded-lg hover:bg-[#1C170D]">Start</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- English Card -->
+        <div class="bg-[#F5F0E5] border border-[#1C170D] rounded-lg overflow-hidden relative">
+          <!-- Kebab Menu -->
+          <div class="absolute top-2 right-2">
+            <button class="p-1 rounded-full hover:bg-[#E8DECF]" ng-click="toggleMenu('english')">
+              <svg class="w-6 h-6 text-[#A1824A]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+              </svg>
+            </button>
+            <!-- Dropdown Menu -->
+            <div ng-show="isMenuOpen('english')" class="absolute right-0 mt-1 w-40 bg-white border border-[#E5E8EB] rounded-lg shadow-lg">
+              <ul>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">View Details</li>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">Edit</li>
+                <li class="p-2 hover:bg-[#F5F0E5] cursor-pointer">Delete</li>
+              </ul>
+            </div>
+          </div>
+          <!-- Top Section -->
+          <div class="p-4">
+            <h2 class="text-xl font-semibold text-[#1C170D]">English</h2>
+            <p class="text-[#A1824A]">17 Students</p>
+          </div>
+          
+          <!-- Divider between Top and Bottom sections -->
+          <div class="bg-[#FFFFFF]">
+            <!-- Bottom Section -->
+            <div class="p-4">
+              <img src="../static/imgs/subject.png" alt="english" class="w-full rounded-lg mb-4">
+              <p class="text-[#A1824A] mb-4">Mrs. Jane Frost</p>
+              <button class="w-full py-2 text-white bg-[#36A86C] rounded-lg hover:bg-[#1C170D]">Start</button>
+            </div>
+          </div>
+        </div>
+    </main>
+
+  <!-- Modal for New Study Session -->
+  <div ng-show="isModalOpen" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg animate-slide-down">
+      <h2 class="text-lg font-semibold">New Study Session</h2>
+      <p>Start a new study session...</p>
+      <button ng-click="closeModal()" class="mt-4 px-4 py-2 bg-[#36A86C] hover:bg-[#E8DECF] text-white rounded">Close</button>
+    </div>
+  </div>
+</body>
+</html>
