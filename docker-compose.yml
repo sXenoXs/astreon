@@ -19,7 +19,7 @@ services:
     env_file:
       - ./backend/astreon_project/.env
     volumes:
-      - /home/berna/astreon/backend:/usr/src/app
+      - ./backend:/usr/src/app
     environment: 
       - DJANGO_SETTINGS_MODULE=astreon_project.settings
     network_mode: host
