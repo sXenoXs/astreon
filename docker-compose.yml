@@ -1,14 +1,10 @@
 services:
   db:
-    image: postgres
-    ports:
-      - "5432:5432"
-    env_file:
+    image: postgres:latest
+    environment:
       - ./backend/astreon_project/.env
     volumes:
       - db_data:/var/lib/postgresql/data
-    network_mode: host
-
   backend:
     build: ./backend
     image: astreon_project
