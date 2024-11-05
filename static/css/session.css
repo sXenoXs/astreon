@@ -1,0 +1,202 @@
+body {
+    font-family: Lexend;
+    background-color: #f7f7f7;
+    height: 100vh;
+    margin: 0;
+}
+
+button{
+    font-family: Lexend;
+}
+input{
+    font-family: Lexend;
+}
+
+.Headercontainer {
+    
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 10px; 
+}
+.titleheader{
+    margin-top:10px;
+    display: flex;
+
+}
+.logo{
+    height:40px;
+    width: 40px;
+    margin-right:5px;
+}
+
+.header {
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size:18px;
+    font-weight:bold;
+
+}
+
+.logindiv{
+    margin-top:10px;
+    display: flex;
+    align-items: center; 
+}
+.profile{
+    height:40px;
+    width: 40px;
+    border-radius: 20px;
+    margin-right:40px;
+    margin-left:32px;
+}
+
+.icon{
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    margin-left:8px;
+}
+
+
+
+.sessionbutton{
+    font-size: 14px; 
+    background-color: #009963;
+    color: white;
+    padding-top: 8px;
+    padding-bottom:8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border:none;
+    border-radius: 10px;
+    font-size:14px;
+    font-weight: bold;
+    margin-left:32px;
+    height: 40px;
+}
+.SearchButton{
+    height:30px;
+    width: auto;
+    padding-left: 8px;
+    padding-right:8px;
+    background-color: #F5F0E5;
+    color:#A1824A;
+    border:none;
+    border-radius:10px;
+}
+.sidebar{
+    height:700px;
+
+
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 320px 2fr;
+  margin-top: 20px;
+  margin-left:20px;
+  margin-right: 20px;
+  margin-bottom:20px;
+  column-gap:10px;
+}
+.sidebarbutton{
+  padding-left: 10px;
+    display: flex;
+    border-radius: 8px;
+    border: 1px solid #E8DECF;
+    background: #FFF;
+    height: 40px;
+    padding-top:10px;
+    width:310px;
+    margin-bottom:10px;
+
+
+}
+.sidebaricon{
+  margin-right: 10px;
+    align-items: center;
+    height: 25px;
+    width:25px;
+}
+.helpbuttons{
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top:10px;
+  margin-left:10px
+}
+.helpframe{
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #F5F0E5;
+}
+.helpbuttonsdiv{
+    display:flex;
+    align-items: center;
+
+}
+.phelpbuttons{
+    padding-left:10px;
+    display: inline-block;
+    align-items: center;
+    color:black;
+}
+.helplink{
+    display:flex;
+    align-items: center;
+}
+
+a{
+    text-decoration:none
+}
+.mainscreen{
+    height:600px;
+
+}
+.calendar{
+
+
+}
+.progression{
+  
+}
+.sidebarbutton:hover{
+  cursor: pointer;
+  background-color:  #E8DECF;
+}
+
+
+
+
+/* session */
+.sessionframe{
+  display:grid;
+  background-color: lightcoral;
+  grid-template-rows: 95px 95px;
+  width:230px;
+  border-color: black;
+  border-radius: 20px;
+  height: auto;
+
+}
+  
+  .fa-ellipsis-v{
+    position: absolute;
+    left: 12px;
+
+
+  }
+  .sessionframe{
+    background-color: lightblue;
+  
+  }
+  .sessiontypeframe{
+    background-color: lightsalmon;
+
+
+  }
