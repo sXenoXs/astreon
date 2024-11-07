@@ -1,4 +1,4 @@
-import { Welcome } from "./assets/pages/welcome.jsx";
+import { Welcome } from "./pages/welcome.jsx";
 
 function App() {
   return <Welcome></Welcome>;
