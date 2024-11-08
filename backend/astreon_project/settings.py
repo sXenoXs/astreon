@@ -44,7 +44,19 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     "users",
+
+    #3rd party
+    "corsheaders",
+    "rest_framework",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
+    "allauth",
+    "allauth.socialaccount",
+    "allauth.account",
+    "rest_framework.authtoken",
+
 ]
 
 MIDDLEWARE = [
@@ -55,6 +67,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "astreon_project.urls"
@@ -68,11 +81,29 @@ TEMPLATES = [ { "BACKEND": "django.template.backends.django.DjangoTemplates",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
 ]
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD= env('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SITE_ID = 1
+
+#set to true since the email verification is mandatory
+ACCOUNT_EMAIL_REQUIRED = True
+#prevent user from logging in unless it is confirmed by an email
+ACCOUNT_EMAIL_VERIFICATION="mandatory"
+#activates the email account after the user clicks on the link received
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+#redirects the user to login  after receiving the link
+LOGIN_REDIRECT_URL = "https://localhost:8000/dj-rest-auth/login"
 WSGI_APPLICATION = "astreon_project.wsgi.application"
 
 
@@ -91,6 +122,19 @@ DATABASES = {
     }
 }
 
+
+#Rest framework config for auth
+
+REST_FRAMEWORK = {
+        "DEFAULT_PERMISSION_CLASSES":[
+            "rest_framework.permissions.IsAuthenticated",
+        ],
+        "DEFAULT_AUTHENTICATION_CLASSES":[
+            "rest_framework.authentication.SessionAuthentication",
+            "rest_framework.authentication.TokenAuthentication",
+        ],
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
