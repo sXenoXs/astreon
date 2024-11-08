@@ -1,0 +1,25 @@
+.footer{
+    background-color: #F5F0E5;
+    padding: 1em 0;
+    color: #A1824A;
+    font-weight: 500;
+
+
+}
+.footer_links{
+    display: flex;  
+    gap: 15%;
+    justify-content: center;
+}
+.footer_links a{
+    text-decoration: none;
+    color: #A1824A;
+
+}
+.copyright_statement{
+    width: fit-content;
+    margin: 1em auto;
+}
+.copyright_statement span{
+    font-weight: 600;
+}

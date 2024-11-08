@@ -5,8 +5,8 @@ export function Button(props) {
       href={props.link || "#"}
       className="btn"
       style={{
-        backgroundColor: props.bgColor || "green",
-        color: props.color || "black",
+        backgroundColor: props.bgColor || "#009963",
+        color: props.color || "white",
       }}
     >
       {props.anchorText}

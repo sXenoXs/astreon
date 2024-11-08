@@ -1,15 +1,23 @@
 import { Button } from "../components/button";
+import { Header } from "../components/header";
+import { Footer } from "../components/footer";
+import "./welcome.css"
+
+
+
 export function Welcome() {
   return (
-    <header className="header">
-      <div className="brand_details">
-        <img src="./imgs/Astreon.png" alt="" />
-        <span>Astreon Study Buddy</span>
-      </div>
-      <div className="btn_group">
-        <Button anchorText="Log In"></Button>
-        <Button anchorText="Sign Up" bgColor="gray" color="white"></Button>
-      </div>
-    </header>
+    <>
+    <Header></Header>
+    <main>
+      <section className="hero_section">
+        <h1 className="hero_section--heading">Get Instant Study Help</h1>
+        <p className="hero_section--text">Upload your study materials and generate quizzes, flashcards, and more. Try it today!</p>
+        <Button anchorText="Try it now"></Button>
+      </section>
+    </main>
+    <Footer></Footer>
+    </>
+
   );
 }
