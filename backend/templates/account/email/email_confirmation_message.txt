@@ -1,0 +1,8 @@
+Ready to start your astreon journey? {{user.username}}? 🚀
+Just one more step to go:
+Please confirm your email to get started, click the link down below: 👇🏻
+
+
+{{ activate_url }}
+If you did not sign up for an account, please ignore this email.
+
