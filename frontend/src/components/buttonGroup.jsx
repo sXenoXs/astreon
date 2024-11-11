@@ -7,6 +7,7 @@ export function ButtonGroup({ buttons = [] }) {
                 <Button
                     key={index}
                     anchorText={button.anchorText}
+                    link={button.link}
                     bgColor={button.bgColor}
                     color={button.color}
                 />
