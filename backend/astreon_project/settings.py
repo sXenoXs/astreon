@@ -96,6 +96,7 @@ EMAIL_HOST_PASSWORD= env('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SITE_ID = 1
 
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 #set to true since the email verification is mandatory
 ACCOUNT_EMAIL_REQUIRED = True
 #prevent user from logging in unless it is confirmed by an email
