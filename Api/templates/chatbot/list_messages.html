@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+</head>
+<body>
+    {% for message in messages %}
+    <div>
+        <strong>User:</strong> {{ message.user_message }}
+    </div>
+    <div>
+        <strong>Bot:</strong> {{ message.bot_response }}
+    </div>
+    {% endfor %}
+
+    <form action="{% url 'send_message' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="user_message" placeholder="Type your message..."></textarea>
+        <input type="file" name="images" multiple accept="image/*">
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
