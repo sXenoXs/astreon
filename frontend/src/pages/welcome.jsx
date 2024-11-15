@@ -14,6 +14,7 @@ export function Welcome() {
             link: "/sign-up",
             bgColor: "#F5F0E5",
             color: "black",
+           
           },
         ]}
       />
