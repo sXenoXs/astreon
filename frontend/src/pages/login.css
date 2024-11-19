@@ -1,19 +1,42 @@
-.login_form{
-    margin: 2em auto;
-    width: fit-content;
+.login_form {
+  margin: 2em auto;
+  width: fit-content;
 }
 
-.login_form input{
-    display: block;
-    width: 100%;
-    height: 3em;
-    border-radius: 5px;
-    background-color: #F5F0E5;
-    padding: 1em;
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.login_form a{
+  color:#a1824a;
 }
 
-.login_form input::placeholder{
-    color: #A1824A;
-    font-family: "Lexend";
+.login_form input[type=text], .login_form input[type=password]  {
+  display: block;
+  width: 100%;
+  height: 3em;
+  border-radius: 10px;
+  border: none;
+  background-color: #f5f0e5;
+  padding: 1em;
+  margin-bottom: 30px;
+}
+
+.login_form input::placeholder {
+  color: #a1824a;
+  font-family: "Lexend";
+}
+.checkboxes{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+.submit_btns{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.submit_btns p, .signup_btn{
+  align-self: center;
 
 }
