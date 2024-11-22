@@ -1,0 +1,72 @@
+.Headercontainer {
+    
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 10px; 
+    margin-top:0px;
+}
+
+.titleheader{
+    margin-top:10px;
+    display: flex;
+    align-items: center; 
+
+}
+.logo{
+    height:40px;
+    width: 40px;
+    margin-right:5px;
+}
+.header {
+    margin-top:10px;
+    margin-bottom:10px;
+    font-size:18px;
+    font-weight:bold;
+    width:400px;
+
+}
+.logindiv{
+    margin-top:10px;
+    display: flex;
+    align-items: center; 
+}
+.SearchButton{
+    height:30px;
+    width: auto;
+    padding-left: 8px;
+    padding-right:8px;
+    background-color: #F5F0E5;
+    color:#A1824A;
+    border:none;
+    border-radius:10px;
+}
+.sessionbutton{
+    font-size: 14px; 
+    background-color: #009963;
+    color: white;
+    padding-top: 8px;
+    padding-bottom:8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border:none;
+    border-radius: 10px;
+    font-size:14px;
+    font-weight: bold;
+    margin-left:32px;
+    height: 40px;
+}
+.icon{
+    height: 40px;
+    width: 40px;
+    border-radius: 10px;
+    margin-left:8px;
+}
+.profile{
+    height:40px;
+    width: 40px;
+    border-radius: 20px;
+    margin-right:40px;
+    margin-left:32px;
+}

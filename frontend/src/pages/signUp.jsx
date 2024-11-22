@@ -27,13 +27,20 @@ export function SignUp() {
           id="confirm_password"
           placeholder="Confirm Password"
         />
-
+        <div className="privacy_policy">
+        <input type="checkbox" name="accept_policy" id="accept_policy" required/>
         <label>
-          <input type="checkbox" />
+        
           By creating an account, you agree to our Terms of Service and Privacy
           Policy.
         </label>
-        <Button anchorText="Sign up" />
+        </div>
+        <div className="submit_sign_up">
+          <Button anchorText="Sign Up"></Button>
+        </div>
+        
+      
+        
       </form>
 
       <Footer />

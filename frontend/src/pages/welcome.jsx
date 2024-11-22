@@ -7,13 +7,14 @@ export function Welcome() {
   return (
     <>
       <Header
-        buttons={[
+        butto ns={[
           { anchorText: "Login", link: "/login" },
           {
             anchorText: "Sign Up",
             link: "/sign-up",
             bgColor: "#F5F0E5",
             color: "black",
+           
           },
         ]}
       />
