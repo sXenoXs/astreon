@@ -1,5 +1,8 @@
+body{
+    margin: 0;
+    padding: 0;
+}
 .Headercontainer {
-    
     border: none;
     display: flex;
     justify-content: space-between;
