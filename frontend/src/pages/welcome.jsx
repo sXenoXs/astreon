@@ -7,7 +7,7 @@ export function Welcome() {
   return (
     <>
       <Header
-        buttons={[
+        butto ns={[
           { anchorText: "Login", link: "/login" },
           {
             anchorText: "Sign Up",
