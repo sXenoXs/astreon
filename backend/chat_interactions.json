@@ -1,0 +1,46 @@
+[
+    {
+        "question": "Whats pipelining",
+        "answer": "an arrangement of the CPU\u2019s hardware components"
+    },
+    {
+        "question": "what is a CPU",
+        "answer": "ILP processors have the same execution hardware as RISC processors"
+    },
+    {
+        "question": "what happens if i punch my teammate in the face?",
+        "answer": "ParallelismInstruction Level Parallelism"
+    },
+    {
+        "question": "ahhhh",
+        "answer": "gaps"
+    },
+    {
+        "question": "who let the dogs out",
+        "answer": "Instruction-level parallelism"
+    },
+    {
+        "question": "Whats pipelining",
+        "answer": "an arrangement of the CPU\u2019s hardware components"
+    },
+    {
+        "question": "what is VLIW",
+        "answer": "Very Long Instruction Word"
+    },
+    {
+        "question": "what is the sun",
+        "answer": "Instruction-level parallelism"
+    },
+    {
+        "question": "Whats pipelining",
+        "answer": "an arrangement of the CPU\u2019s hardware components"
+    },
+    {
+        "question": "WHAT IS VLIW",
+        "answer": "Very Long Instruction Word"
+    },
+    {
+        "question": "what is computer architecture",
+        "answer": "Computer Architecture and OrganizationPipelining"
+    }
+]
