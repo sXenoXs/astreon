@@ -14,7 +14,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-
+from django.conf.urls.static import static
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path,include
 from dj_rest_auth.registration.views import VerifyEmailView,ConfirmEmailView
@@ -22,9 +23,10 @@ from dj_rest_auth.registration.views import VerifyEmailView,ConfirmEmailView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("",include("users.urls")),
+    path("astreon/", include("chatbot.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api/dj-rest-auth/", include("dj_rest_auth.urls")),
     path("api/dj-rest-auth/registration/account-confirm-email/<str:key>/",ConfirmEmailView.as_view()),
     path("api/dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),
-    path("api/dj-rest-auth/account-confirmation-email/", VerifyEmailView.as_view(), name="account_email_verification_sent")
-]
+    path("api/dj-rest-auth/account-confirmation-email/", VerifyEmailView.as_view(), name="account_email_verification_sent"),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

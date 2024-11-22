@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astreon</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h1>Astreon</h1>
+
+        <!-- File Upload Section -->
+        <div class="mt-5">
+            <h3>Upload File:</h3>
+            <form id="upload-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Upload File</button>
+            </form>
+            <div id="upload-status" class="mt-3">
+                <!-- Upload status message will be shown here -->
+            </div>
+        </div>
+
+        <!-- Chatbot Section -->
+        <div class="mt-5">
+            <h3>Ask a Question:</h3>
+            <form id="chat-form" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="question" placeholder="Ask your question" required>
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+
+            <!-- Response area for chatbot -->
+            <div id="response" class="mt-4">
+                <!-- Chatbot answers will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        // Handle file upload
+        $("#upload-form").submit(function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: "{% url 'chatbot_page' %}",  // The URL for your chatbot view
+                type: "POST",
+                data: formData,
+                success: function(response) {
+                    $('#upload-status').html('<p>' + response.message + '</p>');
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+        });
+
+        // Handle Q&A interaction
+        $("#chat-form").submit(function (event) {
+    event.preventDefault();
+
+    var question = $("#question").val().trim();
+    if (!question) return; // Avoid sending empty questions
+
+    // Add user's question to the chat
+    $("#response").append('<p><strong>You:</strong> ' + question + '</p>');
+
+    // Clear the input field
+    $("#question").val('');
+
+    // Add a "typing..." indicator
+    const typingIndicator = $('<p><em>Typing...</em></p>');
+    $("#response").append(typingIndicator);
+
+    // Scroll to the latest message
+    $("#response").scrollTop($("#response")[0].scrollHeight);
+
+    // Make AJAX request to the server
+    $.ajax({
+        url: "{% url 'chatbot_page' %}", // Django chatbot view
+        type: "POST",
+        data: {
+            'question': question,
+            'csrfmiddlewaretoken': "{{ csrf_token }}"
+        },
+        success: function (response) {
+            // Remove the "typing..." indicator
+            typingIndicator.remove();
+
+            if (response.answer) {
+                // Append the bot's response to the chat
+                $("#response").append('<p><strong>Bot:</strong> ' + response.answer + '</p>');
+            } else {
+                // Handle cases where no answer is provided
+                $("#response").append('<p><strong>Bot:</strong> ' + response.message + '</p>');
+            }
+
+            // Scroll to the latest message
+            $("#response").scrollTop($("#response")[0].scrollHeight);
+        },
+        error: function (xhr, status, error) {
+            // Remove the "typing..." indicator
+            typingIndicator.remove();
+
+            // Show an error message in the chat
+            $("#response").append('<p><strong>Error:</strong> Unable to get a response.</p>');
+
+            // Scroll to the latest message
+            $("#response").scrollTop($("#response")[0].scrollHeight);
+        }
+    });
+}); 
+    </script>
+</body>
+
+</html>

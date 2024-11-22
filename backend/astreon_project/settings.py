@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     "allauth.account",
     "rest_framework.authtoken",
 
+    
+
 ]
 
 MIDDLEWARE = [
@@ -180,3 +182,5 @@ STATIC_URL ="/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 sys.path.append(os.path.join(os.path.dirname(__file__)))
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
