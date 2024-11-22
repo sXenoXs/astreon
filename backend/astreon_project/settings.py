@@ -13,22 +13,22 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 import sys
-
 import environ
-#Initialize environment variables
-env = environ.Env()
-environ.Env.read_env()  #reads the .env file
+from dotenv import load_dotenv
+
+#loads the .env file
+load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+env = environ.Env()
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
-
+SECRET_KEY =os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "users",
-    "chatbot",
 
     #3rd party
     "corsheaders",
@@ -58,8 +57,6 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.account",
     "rest_framework.authtoken",
-
-    
 
 ]
 
@@ -95,8 +92,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD= env('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD= os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SITE_ID = 1
 
@@ -118,11 +115,11 @@ WSGI_APPLICATION = "astreon_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": env('DB_NAME'),
-        "USER": env('DB_USER'),
-        "PASSWORD": env('DB_PASSWORD'),
-        "HOST": env('DB_HOST', default='localhost'),
-        'PORT':env('DB_PORT'),
+        "NAME": os.environ.get('DB_NAME'),
+        "USER": os.environ.get('DB_USER'),
+        "PASSWORD":os.environ.get('DB_PASSWORD'),
+        "HOST": os.environ.get('DB_HOST', default='localhost'),
+        'PORT':os.environ.get('DB_PORT'),
 
     }
 }
@@ -182,5 +179,14 @@ STATIC_URL ="/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 sys.path.append(os.path.join(os.path.dirname(__file__)))
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+#use the serializer for models
+
+REST_AUTH_SERIALIZERS = {
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserProfileSerializer'
+}
+ACCOUNT_ADAPTER = 'users.adapters.MyAccountAdapter'
+
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
