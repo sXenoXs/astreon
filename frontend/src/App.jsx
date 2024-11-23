@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ChatBox } from './pages/chatbox.jsx';
+import { ChatBox } from "./pages/chatbox.jsx";
 import { Welcome } from "./pages/welcome.jsx";
 import { Login } from "./pages/login.jsx";
 import { SignUp } from "./pages/signUp.jsx";
