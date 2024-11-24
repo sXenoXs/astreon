@@ -146,27 +146,29 @@ export function ChatBox() {
             />
                <div className="main-container-imagefilesend">
                   <div className="image-file-send">
-                  <div className="image-div">
-                    <div className="image-div-1">
-                      <img
-                        className="uploadicon"
-                        src="./imgs/svgs/upload_image.svg"
-                        alt="Upload Image"
-                        onClick={handleImageUploadClick} // Add click handler to open image upload modal
-                      />
-                    </div>
-
-                    {/* Modal Structure for Image Upload */}
-                    {isImageModalOpen && ( // Use a separate state for the image modal
-                      <div id="imageUploadModal" className="modal">
-                        <div className="modal-content">
-                          <span className="close" onClick={handleCloseImageModal}>&times;</span>
-                          <h2>Upload Image</h2>
-                          <input type="file" accept="image/*" id="imageInput" onChange={handleImageUpload} />
-                          <button onClick={handleCloseImageModal} className="uploadfilebutton">Upload</button> {/* Close modal after uploading */}
+                    <div className="image-div">
+                        <div className="image-div-1">
+                          <img
+                            className="uploadicon"
+                            src="./imgs/svgs/upload_image.svg"
+                            alt="Upload Image"
+                            onClick={handleImageUploadClick} // Add click handler to open image upload modal
+                          />
                         </div>
+
+                          {/* Modal Structure for Image Upload */}
+                          {isImageModalOpen && ( // Use a separate state for the image modal
+                            <div id="imageUploadModal" className="modal">
+                              <div className="modal-content">
+                                <span className="close" onClick={handleCloseImageModal}>&times;</span>
+                                <h2>Upload Image</h2>
+                                <input type="file" accept="image/*" id="imageInput" onChange={handleImageUpload} />
+                                <button onClick={handleCloseImageModal} className="uploadfilebutton">Upload</button> {/* Close modal after uploading */}
+                              </div>
                       </div>
+                    
                     )}
+                    </div>
                   </div>
                     <div className="file-div">
                       <div className="files-div">
@@ -194,7 +196,7 @@ export function ChatBox() {
                     <div className="send-button">
                       <button className="send-button">Send</button>
                     </div>
-                  </div>
+                 
                 </div>
        
           </div>
