@@ -124,7 +124,7 @@ export function ChatBox() {
           <div className="astreon-chat-box">
             <img
               className="astreon"
-              src="./imgs/Astreon.png"
+              src="./imgs/astreonprofile.jpeg"
               alt="Astreon"
             />
             <div>
