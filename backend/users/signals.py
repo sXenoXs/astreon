@@ -1,12 +1,15 @@
-from allauth.account.signals import email_confirmed
+from django.db.models.signals import post_save
 from django.dispatch import receiver
+from allauth.account.models import EmailAddress
+from users.models import CustomUser  # Your custom user model
 
-@receiver(email_confirmed)
-def email_confirmed_(request, email_address, **kwargs):
-    """
-    Saves the user account once the email is verified
-    """
-    user = email_address.user
-    user.email_verified = True
-
-    user.save()
+@receiver(post_save, sender=EmailAddress)
+def update_user_verified_status(sender, instance, created, **kwargs):
+    if instance.verified:
+        try:
+            user = CustomUser.objects.get(email=instance.email)
+            user.is_verified = True  # Update the user verification status
+            user.save()
+        except CustomUser.DoesNotExist:
+            pass  # Handle case where user does not exist
+        
