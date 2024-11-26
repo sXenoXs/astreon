@@ -157,7 +157,11 @@ export function ChatBox() {
           <div className="astreon-chat-box">
             <img
               className="astreon"
+<<<<<<< HEAD
               src="../../imgs/astreon-icon.jpeg"
+
+              src="./imgs/astreonprofile.jpeg"
+>>>>>>> a44927123e1f29c3ef7a6c0172f1d84b6d420796
               alt="Astreon"
             />
             <div>
@@ -165,6 +169,7 @@ export function ChatBox() {
               <div className="_9-03-am">9:03 AM</div>
             </div>
           </div>
+<<<<<<< HEAD
 
          
           <div className="chat-messages">
@@ -175,6 +180,77 @@ export function ChatBox() {
                 {msg.files && msg.files.map((file, fileIndex) => (
                     <div key={fileIndex} className="uploaded-file">📄 {file}</div> // Render file names only
                 ))}
+=======
+          <div className="chatbox">
+            <input
+              className="userinput"
+              type="text"
+              placeholder="Type a message or upload a file/image..."
+              id="userinput"
+              name="userinput"
+            />
+               <div className="main-container-imagefilesend">
+                  <div className="image-file-send">
+                    <div className="image-div">
+                        <div className="image-div-1">
+                          <img
+                            className="uploadicon"
+                            src="./imgs/svgs/upload_image.svg"
+                            alt="Upload Image"
+                            onClick={handleImageUploadClick} // Add click handler to open image upload modal
+                          />
+                        </div>
+
+                          {/* Modal Structure for Image Upload */}
+                          {isImageModalOpen && ( // Use a separate state for the image modal
+                            <div id="imageUploadModal" className="modal">
+                              <div className="modal-content">
+                                <span className="close" onClick={handleCloseImageModal}>&times;</span>
+                                <h2>Upload Image</h2>
+                                <input type="file" accept="image/*" id="imageInput" onChange={handleImageUpload} />
+                                <button onClick={handleCloseImageModal} className="uploadfilebutton">Upload</button> {/* Close modal after uploading */}
+                              </div>
+                      </div>
+                    
+                    )}
+                    </div>
+                  </div>
+                    <div className="file-div">
+                      <div className="files-div">
+                        <img
+                          className="uploadicon"
+                          src="./imgs/svgs/upload_file.svg"
+                          alt="Upload File"
+                          id="uploadFileIcon"
+                          onClick={handleUploadClick} // Add click handler to open modal
+                        />
+
+                        {/* Modal Structure */}
+                        {isModalOpen && (
+                          <div id="uploadModal" className="modal">
+                            <div className="modal-content">
+                              <span className="close" onClick={handleCloseModal} >&times;</span>
+                              <h2>Upload File</h2>
+                              <input type="file" id="fileInput" onChange={handleFileUpload} />
+                              <button onClick={handleCloseModal} className="uploadfilebutton">Upload</button> {/* Close modal after uploading */}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="send-button">
+                      <button className="send-button">Send</button>
+                    </div>
+                 
+                </div>
+       
+          </div>
+          <div className="grid-1">
+            <div className="quick-response">
+                <div className="aisuggestions">
+                    Share your question, and I’ll help you solve it!
+                </div>
+ a44927123e1f29c3ef7a6c0172f1d84b6d420796
             </div>
         </div>
     ))}
