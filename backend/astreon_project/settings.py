@@ -17,7 +17,7 @@ import environ
 from dotenv import load_dotenv
 
 #loads the .env file
-load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,6 +29,8 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY =os.environ.get("SECRET_KEY")
+
+GOOGLE_API_KEY=os.environ.get("API_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "users",
+    "chatbot",
 
     #3rd party
     "corsheaders",
@@ -59,6 +62,11 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
 
 ]
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -69,8 +77,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
-
+CORS_ORIGIN_ALLOW_ALL = True 
 ROOT_URLCONF = "astreon_project.urls"
 
 TEMPLATES = [ { "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -190,3 +199,5 @@ ACCOUNT_ADAPTER = 'users.adapters.MyAccountAdapter'
 
 
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
