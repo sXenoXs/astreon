@@ -23,7 +23,7 @@ from dj_rest_auth.registration.views import VerifyEmailView,ConfirmEmailView
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("",include("users.urls")),
-    path("astreon/", include("chatbot.urls")),
+    path('api/', include('chatbot.urls')),
     path("api-auth/", include("rest_framework.urls")),
     path("api/dj-rest-auth/", include("dj_rest_auth.urls")),
     path("api/dj-rest-auth/registration/account-confirm-email/<str:key>/",ConfirmEmailView.as_view()),
