@@ -4,7 +4,6 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgb(215, 213, 213);
-    width: 100%;
     box-sizing: border-box;
 }
 
@@ -18,4 +17,12 @@
 .brand_details--name{
     font-weight: 600;
     font-size: 1.25rem;
+}
+.icon {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover; /* Ensures image covers the entire area of the container */
+    border-radius: 40px; /* Creates a circle */
 }

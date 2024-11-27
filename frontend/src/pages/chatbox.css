@@ -1,14 +1,113 @@
+.grid {
+    margin-right: 0;
+}
+
+
 body {
-    font-family: Lexend;
-    background-color: #f7f7f7;
-    
+  font-family: Lexend;
+  background-color: #f7f7f7;
+  margin: 0; /* Ensure no default margin */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align content at the top (you can adjust as needed) */
+  min-height: 100vh; /* Make sure body takes full height */
+  flex-direction: column; /* Arrange elements vertically */
+  margin: 10px;
+ 
+} 
+.sidebarbutton{
+  font-family: Lexend;
+  font-weight:bold;
+
 }
-button{
-    font-family: Lexend;
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px; /* Adjust as needed */
+  margin: 0 auto; /* Horizontally center */
+  padding: 0px;
+  box-sizing: border-box;
 }
-input{
-    font-family: Lexend;
+
+loader {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  --c: no-repeat linear-gradient(#25b09b 0 0);
+  background:
+      var(--c) center/100% 10px,
+      var(--c) center/10px 100%;
 }
+
+.loader {
+  position: relative; /* Ensure that the loader is positioned correctly */
+  width: 60px;       /* Set the width of the loader */
+  aspect-ratio: 1;   /* Maintain a square aspect ratio */
+  animation: l5-0 1s infinite steps(1);
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  height: 15px;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(farthest-side,#000 90%,#0000);
+  background: 
+    var(--_g) left, 
+    var(--_g) right;
+  background-size: 25% 100%;
+  display: grid;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  height: inherit;
+  aspect-ratio: 1;
+  grid-area: 1/1;
+  margin: auto;
+  border-radius: 50%;
+  transform-origin: -100% 50%;
+  background: green;
+  animation: l49 1s infinite linear;
+}
+.loader:after {
+  transform-origin: 200% 50%;
+  --s:-1;
+  animation-delay: -.5s;
+}
+
+@keyframes l49 {
+  58%,
+  100% {transform: rotate(calc(var(--s,1)*1turn))}
+}
+
+.chat-messages {
+  flex: 1; /* Allow this section to grow */
+  overflow-y: auto; /* Enable scrolling if messages exceed height */
+  padding: 20px; /* Adjust padding as needed */
+  background-color: #f8f9fa; /* Background for contrast */
+  border-radius: 8px; /* Add border radius for softer edges */
+  width: 100%; /* Use full width of the parent container */
+
+}
+
+.chat-input-container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: white;
+  margin: 0 auto;
+  width: 80%; /* Adjust the width as needed */
+  align-items: center; /* Vertically center content */
+}
+
+.chat-input-container input {
+  flex: 1; /* Allow input to grow */
+  padding: 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 
 .Headercontainer {
     border: none;
@@ -85,25 +184,16 @@ input{
 .sidebar{
     height:600px;
 
-
 }
 
-.grid{
-    display:grid;
-    grid-template-columns: 320px 2fr;
-    margin-top: 20px;
-    margin-left:20px;
-    margin-right: 20px;
-    margin-bottom:20px;
-    column-gap:10px;
-}
-
-.grid-1{
-  display:grid;
-  grid-template-columns: 300px 300px 300px;
-  margin-left:20px;
-  margin-right: 5px;
-  margin-bottom:20px;
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 6fr; /* Flexible column sizes */
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 0px;
+  margin-bottom: 20px;
+  column-gap: 50px;
 }
 
 
@@ -122,6 +212,8 @@ input{
 .chat-box,
 .chat-box * {
   box-sizing: border-box;
+  margin-left: 0px;
+  margin-right:0px;
 }
 .chat-box {
   display: flex;
@@ -311,7 +403,7 @@ input{
   align-items: center;
   justify-content: flex-start;
   flex-shrink: 0;
-  width: 908px;
+  margin:100px;
   position: absolute;
   left: 0px;
   top: 608px;
@@ -501,23 +593,6 @@ height:30px;
   position: relative;
   overflow: hidden;
 }
-.send {
-    margin-right:20px;
-    margin-bottom: 10px;
-  color: #ffffff;
-  text-align: center;
-  font-family: "Lexend-Medium", sans-serif;
-  font-size: 14px;
-  line-height: 21px;
-  font-weight: 500;
-  position: absolute;
-  left: 0px;
-  top: 5px;
-  width: 35px;
-  height: 21px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
 .quick-response {
   display: flex;
   align-items: center;
@@ -685,25 +760,7 @@ height:30px;
     
 }
 
-.send{
-    font-family: lexend;
-    background: #009963;
-    border-radius: 12px;
-    display: flex;
-    position: relative;
-    border:none;
-    width: 84px;
-    height: 32px;
-    align-items: center;
-    padding-left:25px;
 
-}
-.send:hover,
-.sessionbutton:hover{
-    cursor: pointer;
-    background: #01794f;
-
-}
 ::placeholder{
     color: #A1824A;
 }
@@ -821,6 +878,11 @@ button {
   position: relative;
   z-index: 7;
 }
+.send-button{
+  text-decoration: none;
+  color: white;
+  font-size:medium;
+}
 .file-div-3 {
   align-self: stretch;
   flex-grow: 1;
@@ -842,6 +904,7 @@ button {
   z-index: 9;
 }
 .send-button {
+  font: Lexend;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -854,7 +917,6 @@ button {
   border:none;
   padding-top:4px;
   border-radius: 12px;
-  color:white;
   font-weight:bold;
   margin-bottom: 4px;
 }
@@ -874,28 +936,7 @@ button {
   z-index: 11;
   overflow: hidden;
 }
-.send {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: absolute;
-  width: 35px;
-  height: 21px;
-  top: 5px;
-  left: 0;
-  color: #ffffff;
-  font-family: Lexend, var(--default-font-family);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  z-index: 12;
-  overflow: hidden;
-}
+
 
 .modal {
   display: flex; /* Use flex to center the modal */
@@ -939,4 +980,32 @@ button {
   font-weight: bold;
   border-radius: 5px;
 
+}
+
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 70%;
+  clear: both;
+}
+
+.user-message {
+  background-color: #eaeaea;
+  color: black;
+  align-self: flex-end;
+  margin-left: auto;
+  border-radius: 30%;
+  border-radius: 10px;
+}
+
+.ai-message {
+  background-color: #d4edda; /* Light green background */
+  align-self: flex-start;
+  border-radius: 10px;
+}
+
+.uploaded-file {
+  margin-top: 5px;
+  font-size: 0.9em;
 }
