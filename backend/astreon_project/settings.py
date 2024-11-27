@@ -36,7 +36,7 @@ GOOGLE_API_KEY=os.environ.get("API_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'users.User'
+#AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "users",
+    #"users",
     "chatbot",
 
     #3rd party
@@ -122,13 +122,16 @@ WSGI_APPLICATION = "astreon_project.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.environ.get('DB_NAME'),
-        "USER": os.environ.get('DB_USER'),
-        "PASSWORD":os.environ.get('DB_PASSWORD'),
-        "HOST": os.environ.get('DB_HOST', default='localhost'),
-        'PORT':os.environ.get('DB_PORT'),
+    #"default": {
+    #    "ENGINE": "django.db.backends.postgresql_psycopg2",
+    #   "NAME": os.environ.get('DB_NAME'),
+    #   "USER": os.environ.get('DB_USER'),
+    #  "PASSWORD":os.environ.get('DB_PASSWORD'),
+    #    "HOST": os.environ.get('DB_HOST', default='localhost'),
+    #   'PORT':os.environ.get('DB_PORT'),
+        'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': ':memory:',
 
     }
 }
