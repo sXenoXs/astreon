@@ -32,14 +32,14 @@ export function ChatBox() {
   };
 
   const handleSendMessage = async () => {
-    if (!message.trim() && files.length === 0) return; // Don't send if empty
+    if (!message.trim() && files.length === 0) return; // check if there is user input
 
     const formData = new FormData();
     formData.append('message', message); // Append the message
 
     // Append each file to the FormData object
     files.forEach((file) => {
-        formData.append('files', file); // Append the actual file object
+        formData.append('files', file); //Append file object (returns none file object from rest) 
     });
 
     const userMessageEntry = { 
@@ -59,8 +59,8 @@ export function ChatBox() {
 
         const data = await response.json();
         if (response.ok) {
-            // Add AI response to the conversation
-            const aiMessageEntry = { sender: 'ai', message: data.text }; // Assuming the response structure has 'text'
+            //fetch response 
+            const aiMessageEntry = { sender: 'ai', message: data.text }; 
             setConversation(prevConversation => [...prevConversation, aiMessageEntry]);
             setMessage(''); 
             setFiles([]); 
