@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Text from Image</title>
+</head>
+<body>
+    <h1>Extracted Text from Image</h1>
+    <img src="{{ image.image.url }}" alt="Uploaded Image">
+    <p>{{ extracted_text }}</p>
+    <a href="{% url 'image_and_prompt_to_text' %}">Upload Another Image</a>
+</body>
+</html>

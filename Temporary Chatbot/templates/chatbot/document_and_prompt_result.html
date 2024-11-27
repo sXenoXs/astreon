@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extracted Text from Document</title>
+</head>
+<body>
+    <h1>Extracted Text from Document</h1>
+    <a href="{{ document.document.url }}">View Document</a>
+    <p>{{ extracted_text }}</p>
+    <a href="{% url 'document_and_prompt_to_text' %}">Upload Another Document</a>
+</body>
+</html>

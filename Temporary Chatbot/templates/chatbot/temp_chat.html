@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot - File and Prompt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .response {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        .response h3 {
+            color: #007bff;
+        }
+        .response pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .response .content {
+            margin-top: 15px;
+        }
+        .response .content ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        img {
+            max-width: 100%;
+            max-height: 300px;
+        }
+        .file-link {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chatbot - Upload File or Enter Prompt</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if response %}
+    <div class="response">
+        <h3>Response:</h3>
+        <p><strong>Prompt:</strong> {{ response.prompt }}</p>
+        <p><strong>File Name:</strong> {{ response.file_name }}</p>
+        
+        {% if response.file_type == "image" %}
+            <div class="file-display">
+                <h4>Uploaded Image:</h4>
+                <img src="{{ response.image_url }}" alt="Uploaded Image">
+            </div>
+        {% endif %}
+        
+        {% if response.file_type == "document" %}
+            <div class="file-link">
+                <h4>Uploaded Document:</h4>
+                <a href="{{ response.document_url }}" target="_blank">View Document</a>
+            </div>
+        {% endif %}
+        
+        <div class="content">
+            <strong>Content:</strong>
+            <div>{% autoescape off %}{{ response.content|safe }}{% endautoescape %}</div>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
