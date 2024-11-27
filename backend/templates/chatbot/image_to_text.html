@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image to Text</title>
+</head>
+<body>
+    <h1>Upload an Image for Text Extraction</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Extract Text</button>
+    </form>
+</body>
+</html>
+

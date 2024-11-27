@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prompt History</title>
+</head>
+<body>
+    <h1>Prompt History</h1>
+    {% for prompt in prompts %}
+    <div>
+        <strong>Prompt:</strong> {{ prompt.user_prompt }}
+    </div>
+    <div>
+        <strong>Response:</strong> {{ prompt.bot_response }}
+    </div>
+    {% endfor %}
+</body>
+</html>

@@ -327,3 +327,16 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',  # Keep this as a fallback
 ]
 
+
+# Set GENERATIVE_AI_KEY from environment variable
+GENERATIVE_AI_KEY = os.getenv('GENERATIVE_AI_KEY', '')
+
+if not GENERATIVE_AI_KEY:
+    raise ValueError('GENERATIVE_AI_KEY environment variable not set')
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+print(f"Template directories: {os.listdir(BASE_DIR / 'templates')}")
+
