@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from "../components/headerLoggedin";
 import { Footer } from "../components/footer";
-import "./session.css";
+import "./quiz.css";
 import "./sidebar.css";
 
-export function Session() {
+
+export function Quiz() {
     const [sessions, setSessions] = useState([
         {
             id: 1,
@@ -102,40 +103,12 @@ export function Session() {
 
                 <div className="chat-box">
                     <div className="chat-bot-title">
-                        <div className="page-title">Session</div>
+                        <div className="page-title">Quiz</div>
                         <hr />
                     </div>
 
                     <div className="session-main-div">
-                        <div className="grid-session">
-                            {sessions.map((session) => (
-                                <div key={session.id} className="session-border">
-                                    <div className="session-frame">
-                                        <div className="session-design">
-                                            <div className="session-bottom-frame"></div>
-                                            <button className="session-choice">
-                                                <div className="depth-frame">
-                                                    <div className="huge-icons-bot"><div className="group"></div></div>
-                                                </div>
-                                                <div className="depth-frame-1">
-                                                    <span className="ai-study">{session.title}</span>
-                                                </div>
-                                            </button>
-                                            <span className="subject-session-title">{session.subject}</span>
-                                            <button className="session-percentage">
-                                                <div className="depth-frame-2"><div className="depth-frame-3"></div></div>
-                                                <div className="depth-frame-4"><span className="percentage">{session.percentage} %</span></div>
-                                            </button>
-                                            <div className="session-options">
-                                                <div className="charm-menu-kebab">
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
                     </div>
                 </div>
             </div>

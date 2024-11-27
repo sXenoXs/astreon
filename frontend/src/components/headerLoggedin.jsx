@@ -7,7 +7,6 @@ export function Header({ buttons }) {
         <header>
             <div className="Headercontainer">
                 <div className="titleheader">
-                    <img  src="./imgs/Astreon.png" alt="Astreon Logo" />
                     <p className="header">Astreon Study Buddy</p>
                 </div>
                 <div className="logindiv">

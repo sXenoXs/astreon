@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Header } from "../components/headerLoggedin";
 import { Footer } from "../components/footer";
 import "./chatbox.css";
+import "./sidebar.css";
+
 
 export function ChatBox() {
   const [isModalOpen, setIsModalOpen] = useState(false); // For file upload modal
@@ -50,7 +52,6 @@ export function ChatBox() {
       <Header />
       <div className="grid">
         <div className="sidebar">
-          <p className="header">Astreon</p>
           <button className="sidebarbutton">
             <img
               className="sidebaricon"

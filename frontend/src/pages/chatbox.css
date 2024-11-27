@@ -106,23 +106,7 @@ input{
   margin-bottom:20px;
 }
 
-.sidebarbutton{
-    display: flex;
-    border-radius: 8px;
-    border: 1px solid #E8DECF;
-    background: #FFF;
-    height: 40px;
-    padding-top:10px;
-    width:310px;
-    margin-bottom:10px;
 
-}
-.sidebarbutton:hover{
-    cursor: pointer;
-    background-color:  #E8DECF;
-}
-
-.sidebaricon,
 .uploadicon{
     align-items: center;
     height: 20px;
@@ -134,32 +118,7 @@ input{
 .uploadicon:hover{
  cursor: pointer;
 }
-.helpbuttons{
-    height: 23px;
-    width:23px;
-    margin-bottom:10px;
-    display:inline-block;
-    align-items: center;
-    margin-right:10px;
-}
-.helpbuttonsdiv{
-    display:flex;
-    align-items: center;
-    margin-top:5px;
 
-}
-.phelpbuttons{
-    display: inline-block;
-    align-items: center;
-    color:black;
-}
-.helplink{
-    display:flex;
-    align-items: center;
-}
-a{
-    text-decoration:none
-}
 .chat-box,
 .chat-box * {
   box-sizing: border-box;

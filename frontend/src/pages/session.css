@@ -12,61 +12,6 @@ body {
     margin-bottom:20px;
     column-gap:10px;
 }
-.sidebarbutton{
-    display: flex;
-    border-radius: 8px;
-    border: 1px solid #E8DECF;
-    background: #FFF;
-    height: 40px;
-    padding-top:10px;
-    width:310px;
-    margin-bottom:10px;
-
-}
-.sidebarbutton:hover{
-    cursor: pointer;
-    background-color:  #E8DECF;
-}
-
-.sidebaricon,
-.uploadicon{
-    align-items: center;
-    height: 20px;
-    width:20px;
-    margin-right: 3px;
-    margin-left: 3px;
-}
-.header {
-    margin-top:10px;
-    margin-bottom:10px;
-    font-size:18px;
-    font-weight:bold;
-
-}
-
-.helpbuttonsdiv{
-    display:flex;
-    align-items: center;
-    margin-top:5px;
-
-}
-.helplink{
-    display:flex;
-    align-items: center;
-}
-.helpbuttons{
-    height: 23px;
-    width:23px;
-    margin-bottom:10px;
-    display:inline-block;
-    align-items: center;
-    margin-right:10px;
-}
-.phelpbuttons{
-    display: inline-block;
-    align-items: center;
-    color:black;
-}
 
 .chat-box,
 .chat-box * {
@@ -209,6 +154,10 @@ button {
   white-space: nowrap;
   z-index: 19;
 }
+
+.session-choice:hover{
+  background-color: #e8decf;
+}
 .depth-frame {
   display: flex;
   flex-direction: column;
@@ -253,6 +202,7 @@ button {
   z-index: 19;
   padding: 2px 2px 2px 2px;
 }
+
 .subject-session-title {
   display: flex;
   align-items: flex-start;
