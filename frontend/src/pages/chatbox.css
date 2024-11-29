@@ -216,8 +216,7 @@ loader {
  cursor: pointer;
 }
 
-<<<<<<< HEAD
-}
+
 .phelpbuttons{
     display: inline-block;
     align-items: center;
@@ -231,14 +230,6 @@ a{
     text-decoration:none
 }
 
-=======
-.chat-box,
-.chat-box * {
-  box-sizing: border-box;
-  margin-left: 0px;
-  margin-right:0px;
-}
->>>>>>> 4c64c1b62ed697506b269e2955262e080cae9c4c
 .chat-box {
   flex: 1; 
   display: flex;
