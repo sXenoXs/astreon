@@ -7,7 +7,7 @@ export function Header({ buttons }) {
         <header>
             <div className="Headercontainer">
                 <div className="titleheader">
-                    <p className="header">Astreon</p>
+                    <p className="header">Astreon Study Buddy</p>
                 </div>
                 <div className="logindiv">
                     <input className="SearchButton" type="text" placeholder="Search" id="search" name="search" />

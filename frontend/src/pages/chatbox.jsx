@@ -110,6 +110,7 @@ export function ChatBox() {
     }
 }; 
 
+<<<<<<< HEAD
 return (
   <div className="body">
     <Header />
@@ -157,6 +158,38 @@ return (
         </button>
         <div className="helpbuttonsdiv">
           <a className="helplink" href="#">
+=======
+  return (
+    <div className="body">
+      <Header />
+      <div className="grid">
+        <div className="sidebar">
+          <button className="sidebarbutton">
+            <img
+              className="sidebaricon"
+              src="./imgs/svgs/aichat.svg"
+              alt="AI Study"
+            />
+            AI Study
+          </button>
+          <button className="sidebarbutton">
+            <img
+              className="sidebaricon"
+              src="./imgs/svgs/quiz.svg"
+              alt="Quiz Me"
+            />
+            Quiz Me
+          </button>
+          <button className="sidebarbutton">
+            <img
+              className="sidebaricon"
+              src="./imgs/svgs/cards.svg"
+              alt="Flashcards"
+            />
+            Flashcards
+          </button>
+          <button className="sidebarbutton">
+>>>>>>> 4c64c1b62ed697506b269e2955262e080cae9c4c
             <img
             className="helpbuttons"
             src="./imgs/svgs/help.svg"
@@ -194,6 +227,7 @@ return (
             <div className="astreon2">Astreon</div>
             <div className="_9-03-am">9:03 AM</div>
           </div>
+<<<<<<< HEAD
         </div>
 
         <div className="chat-messages">
@@ -226,6 +260,39 @@ return (
             </div>
 
             {isImageModalOpen && (
+=======
+          <div className="chat-messages">
+            {conversation.map((msg, index) => (
+              <div key={index} className={`message ${msg.sender === 'ai' ? 'ai-message' : 'user-message'}`}>
+                <div className="message-content">
+                  <p>{msg.message}</p>
+                  {msg.files && msg.files.map((file, fileIndex) => (
+                    <div key={fileIndex} className="uploaded-file"> {file}</div> 
+                  ))}
+                </div>
+              </div>
+            ))}
+            {loading && <div className="loader"></div>}
+          </div>
+          <div className="chat-input-container">
+            <input
+              className="userinput"
+              type="text"
+              placeholder="Type a message or upload a file/image..."
+              id="userinput"
+              name="userinput"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <div className="image-file-send">
+              <img
+                className="uploadicon"
+                src="./imgs/svgs/upload_image.svg"
+                alt="Upload Image"
+                onClick={handleImageUploadClick} 
+              />
+              {isImageModalOpen && (
+>>>>>>> 4c64c1b62ed697506b269e2955262e080cae9c4c
                 <div className="modal">
                   <div className="modal-content">
                     <span className="close" onClick={handleCloseImageModal}>&times;</span>
@@ -234,6 +301,7 @@ return (
                     <button onClick={handleCloseImageModal} className="uploadfilebutton">Upload</button>
                   </div>
                 </div>
+<<<<<<< HEAD
             )}
 
             {/* Fix: File upload modal */}
@@ -249,6 +317,18 @@ return (
           Send
         </button>
             {isFileUploadModalOpen && (
+=======
+              )}
+            </div>
+            <div className="file-div">
+              <img
+                className="uploadicon"
+                src="./imgs/svgs/upload_file.svg"
+                alt="Upload File"
+                onClick={handleUploadClick} 
+              />
+              {isModalOpen && (
+>>>>>>> 4c64c1b62ed697506b269e2955262e080cae9c4c
                 <div className="modal">
                     <div className="modal-content">
                         <span className="close" onClick={handleCloseFileModal}>&times;</span>
@@ -257,12 +337,26 @@ return (
                         <button onClick={handleCloseFileModal} className="uploadfilebutton">Upload</button>
                     </div>
                 </div>
+<<<<<<< HEAD
             )}
+=======
+              )}
+            </div>
+            <div className="send">
+              <button className="send-button" onClick={handleSendMessage}>Send</button>
+            </div>
+          </div>
+>>>>>>> 4c64c1b62ed697506b269e2955262e080cae9c4c
         </div>
 
       </div>
     </div>
+<<<<<<< HEAD
     <Footer />
   </div>
 );
 } 
+=======
+  );
+}
+>>>>>>> 4c64c1b62ed697506b269e2955262e080cae9c4c

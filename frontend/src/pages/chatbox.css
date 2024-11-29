@@ -203,23 +203,7 @@ loader {
   width: 100%; /* Full width */
 }
 
-.sidebarbutton{
-    display: flex;
-    border-radius: 8px;
-    border: 1px solid #E8DECF;
-    background: #FFF;
-    height: 40px;
-    padding-top:10px;
-    width:310px;
-    margin-bottom:10px;
 
-}
-.sidebarbutton:hover{
-    cursor: pointer;
-    background-color:  #E8DECF;
-}
-
-.sidebaricon,
 .uploadicon{
     align-items: center;
     height: 20px;
@@ -231,19 +215,8 @@ loader {
 .uploadicon:hover{
  cursor: pointer;
 }
-.helpbuttons{
-    height: 23px;
-    width:23px;
-    margin-bottom:10px;
-    display:inline-block;
-    align-items: center;
-    margin-right:10px;
-}
-.helpbuttonsdiv{
-    display:flex;
-    align-items: center;
-    margin-top:5px;
 
+<<<<<<< HEAD
 }
 .phelpbuttons{
     display: inline-block;
@@ -258,6 +231,14 @@ a{
     text-decoration:none
 }
 
+=======
+.chat-box,
+.chat-box * {
+  box-sizing: border-box;
+  margin-left: 0px;
+  margin-right:0px;
+}
+>>>>>>> 4c64c1b62ed697506b269e2955262e080cae9c4c
 .chat-box {
   flex: 1; 
   display: flex;
