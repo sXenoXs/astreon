@@ -10,7 +10,10 @@ export function ButtonGroup({ buttons = [] }) {
                     link={button.link}
                     bgColor={button.bgColor}
                     color={button.color}
+<<<<<<< HEAD
                     
+=======
+>>>>>>> feature/astreon-ai
                 />
             ))}
         </div>

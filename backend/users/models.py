@@ -1,7 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+<<<<<<< HEAD
 from django.utils.timezone import now
+=======
+>>>>>>> feature/astreon-ai
 
 class RoleType(models.TextChoices):
     ADMIN = 'admin'
@@ -23,9 +26,13 @@ class User(AbstractUser):
     timeLog = models.ForeignKey(TimeLog,null=True,blank=True, on_delete=models.CASCADE)
     role = models.ForeignKey(Role, on_delete=models.CASCADE,null=True, blank=True)
 
+<<<<<<< HEAD
 class User(AbstractUser):
     is_verified = models.BooleanField(default=False)
     date_joined = models.DateTimeField(default=now)   
+=======
+    
+>>>>>>> feature/astreon-ai
 
 
 

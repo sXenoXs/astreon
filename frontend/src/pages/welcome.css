@@ -1,5 +1,6 @@
 
 .hero_section{
+<<<<<<< HEAD
   margin: 2%;
   margin-bottom: 4%;
   border-radius: 10px;
@@ -24,5 +25,31 @@
 .hero_section--text{
   margin-bottom: 2em;
   font-size: 1.125rem;
+=======
+    margin: 2%;
+    margin-bottom: 4%;
+    border-radius: 10px;
+    background: url(../../imgs/welcome.jpg);
+    min-height: 90vh;
+    background-repeat:no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 4%;
+    padding-left: 2%;
+    color: white;
+}
+
+.hero_section--heading{
+    margin-bottom: 1em;
+    font-size: 2rem;
+}
+.hero_section--text{
+    margin-bottom: 2em;
+    font-size: 1.125rem;
+>>>>>>> feature/astreon-ai
 
 }

@@ -46,4 +46,8 @@ export function SignUp() {
       <Footer />
     </>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> feature/astreon-ai
