@@ -1,0 +1,9 @@
+{
+    "input_message": "which phone I am using?",
+    "generated_text": "<p>I do not have access to your personal information, including the type of phone you are using.  I cannot see your device or its specifications.</p>\n",
+    "metadata": {
+        "response_time": "N/A",
+        "word_count": 25,
+        "tokens_used": 0
+    }
+}

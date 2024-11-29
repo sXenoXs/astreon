@@ -1,8 +1,7 @@
-from django.contrib import admin
 from django.urls import path
-from . views import chatbot_and_upload
+from .views import ChatWithGeminiView
 
 urlpatterns = [
-  
-    path('chat/',chatbot_and_upload, name='chatbot_page'),
+    path('chat/', ChatWithGeminiView.as_view(), name='chat_with_gemini'),
+    # Other URLs...
 ]
