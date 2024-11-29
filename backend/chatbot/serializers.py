@@ -13,3 +13,14 @@ class ChatMessageSerializer(serializers.Serializer):
     message = serializers.CharField(max_length=255)
     files = serializers.ListField(child=serializers.FileField(required=False, allow_null=True),
     required=False, allow_empty=True)
+
+class VerifyEmailSerializer(serializers.Serializer):
+    """
+    Serializer for verifying the email confirmation key.
+    """
+    key = serializers.CharField(max_length=64, required=True)
+
+    def validate_key(self, value):
+        if not value:
+            raise serializers.ValidationError(_("This field is required."))
+        return value

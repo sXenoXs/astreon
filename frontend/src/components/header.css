@@ -4,11 +4,6 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgb(215, 213, 213);
-<<<<<<< HEAD
-    width: 100%;
-=======
->>>>>>> feature/astreon-ai
-    box-sizing: border-box;
 }
 
 
@@ -21,8 +16,6 @@
 .brand_details--name{
     font-weight: 600;
     font-size: 1.25rem;
-<<<<<<< HEAD
-=======
 }
 .icon {
     width: 40px;
@@ -31,5 +24,4 @@
     overflow: hidden;
     object-fit: cover; /* Ensures image covers the entire area of the container */
     border-radius: 40px; /* Creates a circle */
->>>>>>> feature/astreon-ai
 }
