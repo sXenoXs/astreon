@@ -4,4 +4,7 @@ db.sqlite3
 *.env
 token.json
 credentials.json
-node_modules/
+node_modules*
+package-lock.json
+package.json
+credentials.json:Zone.Identifier
