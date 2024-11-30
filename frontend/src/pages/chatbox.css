@@ -108,8 +108,7 @@ loader {
   padding: 10px;
   border-top: 1px solid #ddd;
   background-color: white;
-  margin: 0 auto;
-  width: 80%; /* Adjust the width as needed */
+  width: 100%;
   align-items: center; /* Vertically center content */
 }
 
