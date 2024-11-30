@@ -1,5 +1,4 @@
 .signup_form {
-<<<<<<< HEAD
   margin: 2em auto;
   width: fit-content;
 }
@@ -44,7 +43,6 @@ h2 {
 .submit_sign_up *{
   width: 100%;
   text-align: center;
-=======
     margin: 2em auto;
     width: fit-content;
   }
@@ -89,5 +87,4 @@ h2 {
   .submit_sign_up *{
     width: 100%;
     text-align: center;
->>>>>>> feature/astreon-ai
 }
