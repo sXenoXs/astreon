@@ -20,8 +20,4 @@ export function Welcome() {
       <Footer />
     </>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> feature/astreon-ai

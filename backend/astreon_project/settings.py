@@ -15,9 +15,14 @@ import os
 import sys
 import environ
 from dotenv import load_dotenv
+from pathlib import Path
+import environ
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 #loads the .env file
-load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,7 +39,9 @@ SECRET_KEY =os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# Application definition
 
 # Application definition
 
@@ -46,10 +53,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
-    "users",
+    "users.apps.UsersConfig",
+    "cleanup",
 
-    #3rd party
-    "corsheaders",
+    # 3rd party
+    "corsheaders",  # Keep only one instance of corsheaders
     "rest_framework",
     "dj_rest_auth",
     "dj_rest_auth.registration",
@@ -57,19 +65,73 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.account",
     "rest_framework.authtoken",
-
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",  # Add CORS middleware here
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",  # CSRF Middleware
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    "users.middleware.custom_login_redirect_middleware",  # Add your custom middleware
+    
 ]
+
+# Add localhost for development
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.100.152']
+
+# Add the React development server to the allowed origins
+CORS_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:5173',
+    'http://localhost:5173',
+]
+
+# Allow credentials
+CORS_ALLOW_CREDENTIALS = True
+
+# Add the React development server to the allowed origins
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:5173',  # React local development
+    'http://localhost:5173',  # React local development
+    'http://127.0.0.1:8000', 
+]
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:5173', 'http://localhost:5173','http://127.0.0.1:8000']
+
+# Add the React development server to the allowed origins
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+# Add the React development server to the allowed origins
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+]
+
+# Make sure CSRF is properly configured
+CSRF_COOKIE_SAMESITE = 'Lax'  # Add this
+CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_COOKIE_SECURE = False  # Set to True in production
+SESSION_COOKIE_SECURE = False  # Set to True in production
+CSRF_COOKIE_DOMAIN = '.localhost'
+SESSION_COOKIE_DOMAIN = '.localhost' 
 
 ROOT_URLCONF = "astreon_project.urls"
 
@@ -88,15 +150,26 @@ TEMPLATES = [ { "BACKEND": "django.template.backends.django.DjangoTemplates",
     },
 ]
 
+logging.basicConfig(level=logging.DEBUG)
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD= os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SITE_ID = 1
 
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+    'yourapp.auth_backends.UsernameOrEmailBackend',
+]
+
+ACCOUNT_USERNAME_REQUIRED = True
+#set to true since the username is mandatory
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 #set to true since the email verification is mandatory
 ACCOUNT_EMAIL_REQUIRED = True
@@ -105,7 +178,11 @@ ACCOUNT_EMAIL_VERIFICATION="mandatory"
 #activates the email account after the user clicks on the link received
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 #redirects the user to login  after receiving the link
+"""
+# for backend 
 LOGIN_REDIRECT_URL = "https://localhost:8000/dj-rest-auth/login"
+"""
+LOGIN_REDIRECT_URL = "http://localhost:5173/login" 
 WSGI_APPLICATION = "astreon_project.wsgi.application"
 
 
@@ -128,14 +205,14 @@ DATABASES = {
 #Rest framework config for auth
 
 REST_FRAMEWORK = {
-        "DEFAULT_PERMISSION_CLASSES":[
-            "rest_framework.permissions.IsAuthenticated",
-        ],
-        "DEFAULT_AUTHENTICATION_CLASSES":[
-            "rest_framework.authentication.SessionAuthentication",
-            "rest_framework.authentication.TokenAuthentication",
-        ],
-
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",  # Add this if you're using JWT
+    ],
 }
 
 # Password validation
@@ -184,9 +261,80 @@ sys.path.append(os.path.join(os.path.dirname(__file__)))
 #use the serializer for models
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'users.serializers.UserProfileSerializer'
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserProfileSerializer',
+    'LOGIN_SERIALIZER': 'users.serializers.CustomLoginSerializer',
 }
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'users.serializers.CustomRegisterSerializer',
+}
+
+
 ACCOUNT_ADAPTER = 'users.adapters.MyAccountAdapter'
 
 
-ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username' 
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"    
+
+# Logging config for allauth 
+logging.basicConfig(level=logging.DEBUG)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+        # Loggers for custom apps, including your backend
+        'users': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
+# Set the redirect URL after successful email verification
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/verification-complete/'
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/verification-complete/'
+
+# Set the redirect URL after successful signup, for example, the homepage
+ACCOUNT_SIGNUP_REDIRECT_URL = '/SignUp.html'  # Set the redirect URL after successful signup, for example, the homepage or login page
+ACCOUNT_AUTHENTICATED_REDIRECT_URL = '/'  # Redirect authenticated users after login (e.g., homepage)
+
+# Add the custom authentication backend
+AUTHENTICATION_BACKENDS = [
+    'users.auth_backends.UsernameOrEmailBackend',  # Ensure it's pointing to the custom backend
+    'django.contrib.auth.backends.ModelBackend',  # Keep this as a fallback
+]
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+print(f"Template directories: {os.listdir(BASE_DIR / 'templates')}")
+
