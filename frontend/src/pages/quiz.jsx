@@ -41,68 +41,62 @@ export function Quiz() {
         <div className="body">
             <Header />
             <div className="grid">
-                <div className="sidebar">
-                    <button className="sidebarbutton">
+            <div className="sidebar">
+                <Link to="/chatbox" className="sidebarbutton">
+                    <img
+                        className="sidebaricon"
+                        src="./imgs/svgs/aichat.svg"
+                        alt="AI Study"
+                    />
+                    AI Study
+                </Link>
+                <Link to="/quiz" className="sidebarbutton">
+                    <img
+                        className="sidebaricon"
+                        src="./imgs/svgs/quiz.svg"
+                        alt="Quiz Me"
+                    />
+                    Quiz Me
+                </Link>
+                <Link to="/flashcards" className="sidebarbutton">
+                    <img
+                        className="sidebaricon"
+                        src="./imgs/svgs/cards.svg"
+                        alt="Flashcards"
+                    />
+                    Flashcards
+                </Link>
+                <Link to="/sessions" className="sidebarbutton">
+                    <img
+                        className="sidebaricon"
+                        src="./imgs/svgs/sessions.svg"
+                        alt="Sessions"
+                    />
+                    Sessions
+                </Link>
+
+                <div className="helpbuttonsdiv">
+                    <a className="helplink" href="#">
                         <img
-                            className="sidebaricon"
-                            src="./imgs/svgs/aichat.svg"
-                            alt="AI Study"
+                            className="helpbuttons"
+                            src="./imgs/svgs/help.svg"
+                            alt="Help"
                         />
-                        AI Study
-                    </button>
-                    <button className="sidebarbutton">
-                        <img
-                            className="sidebaricon"
-                            src="./imgs/svgs/quiz.svg"
-                            alt="Quiz Me"
-                        />
-                        Quiz Me
-                    </button>
-                    <button className="sidebarbutton">
-                        <img
-                            className="sidebaricon"
-                            src="./imgs/svgs/cards.svg"
-                            alt="Flashcards"
-                        />
-                        Flashcards
-                    </button>
-                    <button className="sidebarbutton">
-                        <img
-                            className="sidebaricon"
-                            src="./imgs/svgs/sessions.svg"
-                            alt="Sessions"
-                        />
-                        Sessions
-                    </button>
-                    <button className="sidebarbutton">
-                        <img
-                            className="sidebaricon"
-                            src="./imgs/svgs/learn_mode.svg"
-                            alt="Learning Modes"
-                        />
-                        Learning Modes
-                    </button>
-                    <div className="helpbuttonsdiv">
-                        <a className="helplink" href="#">
-                            <img
-                                className="helpbuttons"
-                                src="./imgs/svgs/help.svg"
-                                alt="Help"
-                            />
-                            <p className="phelpbuttons">Help</p>
-                        </a>
-                    </div>
-                    <div className="helpbuttonsdiv">
-                        <a className="helplink" href="#">
-                            <img
-                                className="helpbuttons"
-                                src="./imgs/svgs/feedback.svg"
-                                alt="Feedback"
-                            />
-                            <p className="phelpbuttons">Feedback</p>
-                        </a>
-                    </div>
+                        <p className="phelpbuttons">Help</p>
+                    </a>
                 </div>
+                <div className="helpbuttonsdiv">
+                    <a className="helplink" href="#">
+                        <img
+                            className="helpbuttons"
+                            src="./imgs/svgs/feedback.svg"
+                            alt="Feedback"
+                        />
+                        <p className="phelpbuttons">Feedback</p>
+                    </a>
+                </div>
+            </div>
+
 
                 <div className="main-page-div">
                     <div className="main-age-title-div">
@@ -129,11 +123,10 @@ export function Quiz() {
                             </div>
 
                             <br />
-
                             <div className="quiz-body-input-div">
                                 <div className="quiz-body-border">
                                     <br />
-                                    <input className="quiz-body-text" type="textarea" id="lname" name="lname" />
+                                    <textarea className="quiz-body-text" id="lname" name="lname" placeholder="Enter your text here..."></textarea>
                                 </div>
                             </div>
 

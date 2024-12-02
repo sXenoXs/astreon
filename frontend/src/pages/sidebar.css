@@ -7,11 +7,17 @@
     padding-top:10px;
     width:310px;
     margin-bottom:10px;
+    color: #000; /* Set your desired default text color */
+    text-decoration: none; /* Remove underline from links */
 
 }
 .sidebarbutton:hover{
     cursor: pointer;
     background-color:  #E8DECF;
+    color: blackF;
+}
+.sidebarbutton:active{
+    color: black;
 }
 
 .sidebaricon,

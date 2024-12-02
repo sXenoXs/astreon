@@ -1,0 +1,192 @@
+.main-div-01 {
+    padding: 16px;
+    flex-shrink: 0;
+    position: relative;
+    background-color: lightblue;
+  }
+  .main-div-02 {
+    padding: 16px;
+    flex-shrink: 0;
+    position: relative;
+    background-color: lightgreen;
+  }
+  .main-page-div {
+ 
+    flex-direction: column;
+    width: 100%;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  .page-title {
+    color: #1c170d;
+    text-align: left;
+    font-family: "Lexend-Bold", sans-serif;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 700;
+    position: relative;
+    align-self: stretch;
+    margin-top:10px;
+    margin-bottom:10px;
+    font-weight:bold;
+  }
+
+
+  /* Progress Bar Styles */
+
+  
+  input,
+  select,
+  textarea,
+  button {
+    outline: 0;
+  }
+  
+  .progress-bar-border {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    position: relative;
+    height: 79px;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+  
+  .progression-bar-main {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    position: relative;
+    width: 876px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  .progression-bar {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    position: relative;
+    min-width: 0;
+    padding: 8px 8px 8px 16px;
+    background: #f4efe5;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 5px;
+    height:90px;
+    margin-bottom: 30px;
+    
+  }
+  .subject-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: absolute;
+    width: 852px;
+    height: 24px;
+    top: 10px;
+    left: 12px;
+    color: #a08249;
+    font-family: Lexend, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 2;
+  }
+  .progress-bar {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    position: absolute;
+    width: 720px;
+    height: 31px;
+    top: 48px;
+    left: 12px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    z-index: 3;
+    border-radius: 12px;
+  }
+  .user-progress {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    position: relative;
+    width: 0px;
+    height: 31px;
+    padding: 8px 8px 8px 16px;
+    background: #009963;
+    z-index: 4;
+    overflow: hidden;
+    border-radius: 12px 0 0 12px;
+  }
+  .user-not-progressed {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    position: relative;
+    width: 675px;
+    min-height: 0;
+    padding: 8px 8px 8px 16px;
+    background: rgba(0, 153, 99, 0.5);
+    z-index: 5;
+    overflow: hidden;
+    border-radius: 0 12px 12px 0;
+  }
+  .progress-bar-2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: absolute;
+    width: 44px;
+    height: 24px;
+    top: 52px;
+    left: calc(50% - 22px);
+    color: #ffffff;
+    font-family: Lexend, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 6;
+  }
+  .arrow-icon {
+    flex-shrink: 0;
+    position: absolute;
+    width: 12px;
+    height: 24px;
+    top: 10px;
+    left: 852px;
+    z-index: 7;
+    overflow: hidden;
+  }
+  .vector {
+    position: relative;
+    width: 7.364px;
+    height: 12.728px;
+    margin: 5.64px 0 0 3.086px;
+    background: url(./assets/images/a661f01c-36dd-4e0d-831e-558665be9834.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 8;
+  }
