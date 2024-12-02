@@ -60,10 +60,11 @@ hr.header-hr{
     height: 40px;
 }
 .iconButton{
-    height: 30px;
-    width: 30px;
-    margin-left:15px;
-    margin-right:5px;
+    height: 20px;
+    width: 20px;
+    margin-top:10px;
+    margin-left:10px;
+
 }
 .profile{
     height:40px;
@@ -71,4 +72,13 @@ hr.header-hr{
     border-radius: 20px;
     margin-right:40px;
     margin-left:32px;
+}
+
+.headerBox{
+    border-radius: 12px;
+    background: #F5F0E5;
+    height:40px;
+    width:40px;
+    margin-left:20px;
+
 }

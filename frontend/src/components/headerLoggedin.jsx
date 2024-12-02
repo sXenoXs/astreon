@@ -21,24 +21,33 @@ export function Header({ buttons }) {
                         autoComplete="off"
                     />
                     <button className="sessionbutton">New Study Session</button>
-                    <a href="#">
-                        <img 
-                            className="iconButton" 
-                            src="./imgs/svgs/notification.svg" 
-                            alt="Notification" 
-                            title="Notification"
-                        />
-                    </a>
-                    <Link to="/calendar">
-                        <a href="#">
+                   
+                    <Link to="/notification">
+                    <div className="headerBox">
+                       
                             <img 
                                 className="iconButton" 
-                                src="./imgs/svgs/calendar.svg" 
-                                alt="Calendar" 
-                                title="Calendar"
+                                src="./imgs/svgs/notification.svg" 
+                                alt="Notification" 
+                                title="Notification"
                             />
-                        </a>
+                       
+                    </div>
                     </Link>
+                        <Link to="/calendar">
+                        <div  className="headerBox">
+                            <a href="#">
+                                <img 
+                                    className="iconButton" 
+                                    src="./imgs/svgs/calendar.svg" 
+                                    alt="Calendar" 
+                                    title="Calendar"
+                                />
+                            </a>
+                        </div>
+                        </Link>
+
+
                     <Link to="/profile">
                         <img 
                             className="profile" 
