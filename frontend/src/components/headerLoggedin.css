@@ -59,6 +59,10 @@ hr.header-hr{
     margin-left:32px;
     height: 40px;
 }
+.sessionbutton:hover{
+    cursor: pointer;
+    background-color: #026945;
+}
 .iconButton{
     height: 20px;
     width: 20px;

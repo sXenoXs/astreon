@@ -5,7 +5,7 @@ import { Login } from "./pages/login.jsx";
 import { SignUp } from "./pages/signUp.jsx";
 import { Session } from "./pages/session.jsx"; 
 import { Quiz } from "./pages/quiz.jsx";
-import { HomePage } from "./pages/homepage.jsx";
+import { Calendar } from "./pages/calendar.jsx";
 import { Flashcards } from "./pages/flashcards.jsx";
 import { Profile } from "./pages/profile.jsx";
 
@@ -21,7 +21,7 @@ function App() {
                 <Route path="/sign-up" element={<SignUp />} />
                 <Route path="/sessions" element={<Session />} />
                 <Route path="/quizme" element={<Quiz />} />
-                <Route path="/calendar" element={<HomePage />} />
+                <Route path="/calendar" element={<Calendar />} />
                 <Route path="/flashcards" element={<Flashcards />} />
                 <Route path="/profile" element={<Profile />} />
 
