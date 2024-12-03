@@ -34,16 +34,7 @@ hr.header-hr{
     display: flex;
     align-items: center; 
 }
-.SearchButton{
-    height:30px;
-    width: auto;
-    padding-left: 8px;
-    padding-right:8px;
-    background-color: #F5F0E5;
-    color:#A1824A;
-    border:none;
-    border-radius:10px;
-}
+
 .sessionbutton{
     font-size: 14px; 
     background-color: #009963;

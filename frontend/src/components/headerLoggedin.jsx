@@ -12,14 +12,7 @@ export function Header({ buttons }) {
                     <h1 className="header">Astreon Study Buddy</h1>
                 </div>
                 <div className="logindiv">
-                    <input 
-                        className="SearchButton" 
-                        type="text" 
-                        placeholder="Search" 
-                        id="search" 
-                        name="search" 
-                        autoComplete="off"
-                    />
+                   
                     <button className="sessionbutton">New Study Session</button>
                    
                     <Link to="/notification">
