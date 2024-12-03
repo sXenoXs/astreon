@@ -101,13 +101,13 @@ export function Calendar() {
                             </div>
                                 <div className="calendar-grid">
                                     <div className="calendar-weekdays">
+                                        <div className="weekday">Sun</div>
                                         <div className="weekday">Mon</div>
-                                        <div className="weekday">Tue</div>
+                                        <div className="weekday">Tues</div>
                                         <div className="weekday">Wed</div>
-                                        <div className="weekday">Thu</div>
+                                        <div className="weekday">Thurs</div>
                                         <div className="weekday">Fri</div>
                                         <div className="weekday">Sat</div>
-                                        <div className="weekday">Sun</div>
                                     </div>
                                          <div className="calendar-days">{renderCalendar()}</div>
                                 </div>
@@ -126,13 +126,13 @@ export function Calendar() {
                             </div>
                                 <div className="calendar-grid">
                                     <div className="calendar-weekdays">
+                                        <div className="weekday">Sun</div>
                                         <div className="weekday">Mon</div>
-                                        <div className="weekday">Tue</div>
+                                        <div className="weekday">Tues</div>
                                         <div className="weekday">Wed</div>
-                                        <div className="weekday">Thu</div>
+                                        <div className="weekday">Thurs</div>
                                         <div className="weekday">Fri</div>
                                         <div className="weekday">Sat</div>
-                                        <div className="weekday">Sun</div>
                                     </div>
                                          <div className="calendar-days">{renderCalendar()}</div>
                                 </div>
