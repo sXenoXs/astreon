@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "users.apps.UsersConfig",
     "cleanup",
+    "chatbot",
 
     # 3rd party
     "corsheaders",  # Keep only one instance of corsheaders
@@ -72,7 +73,7 @@ MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",  # Add CORS middleware here
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",  # CSRF Middleware
+    #"django.middleware.csrf.CsrfViewMiddleware",  # CSRF Middleware
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -125,9 +126,10 @@ CORS_ALLOW_HEADERS = [
 ]
 
 # Make sure CSRF is properly configured
-CSRF_COOKIE_SAMESITE = 'Lax'  # Add this
+CSRF_COOKIE_SAMESITE = 'Lax' 
 CSRF_COOKIE_HTTPONLY = False
-CSRF_COOKIE_NAME = "csrftoken"
+CSRF_COOKIE_NAME = "X_CSRFTOKEN"
+CSRF_HEADER_NAME= "HTTP_X_CSRFTOKEN"
 CSRF_COOKIE_SECURE = False  # Set to True in production
 SESSION_COOKIE_SECURE = False  # Set to True in production
 CSRF_COOKIE_DOMAIN = '.localhost'
@@ -205,13 +207,21 @@ DATABASES = {
 #Rest framework config for auth
 
 REST_FRAMEWORK = {
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser'
+    ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
+        "rest_framework.permissions.IsAdminUser",
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
     ],
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
-        "dj_rest_auth.jwt_auth.JWTCookieAuthentication",  # Add this if you're using JWT
+
     ],
 }
 

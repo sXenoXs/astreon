@@ -16,7 +16,8 @@ urlpatterns = [
     path("api/dj-rest-auth/account-confirmation-email/", VerifyEmailView.as_view(), name="account_email_verification_sent"),
     # Use the default dj_rest_auth login view
     path('api/dj-rest-auth/login/', include("dj_rest_auth.urls")),
-    path('chatbot/', include('users.urls')),
+    path('api/chat/', include('chatbot.urls')),
+
 ]
 
 # Add this at the end of the file
