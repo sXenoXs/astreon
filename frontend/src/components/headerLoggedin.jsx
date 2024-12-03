@@ -9,7 +9,7 @@ export function Header({ buttons }) {
         <header>
             <div className="Headercontainer">
                 <div className="titleheader">
-                    <h1 className="header">Astreon Study Buddy</h1>
+                    <h1 className="header-title">Astreon Study Buddy</h1>
                 </div>
                 <div className="logindiv">
                    
@@ -51,7 +51,7 @@ export function Header({ buttons }) {
                     </Link>
                 </div>
             </div>
-            <hr className="header-hr"></hr>
+            
         </header>
     );
 }

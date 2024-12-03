@@ -50,7 +50,7 @@ export function Quiz() {
                     />
                     AI Study
                 </Link>
-                <Link to="/quiz" className="sidebarbutton">
+                <Link to="/quizme" className="sidebarbutton">
                     <img
                         className="sidebaricon"
                         src="./imgs/svgs/quiz.svg"

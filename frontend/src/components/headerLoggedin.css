@@ -3,16 +3,18 @@ body{
     padding: 0;
 }
 .Headercontainer {
-    border: none;
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    height:60px;
+    height: 60px;
     margin-bottom: 2px;
-    margin-top:0px;
-
-
+    margin-top: 0px;
+    background-color: #fff; /* Ensure this is set */
+    border-bottom: 1px solid rgb(215, 213, 213); /* This should be visible */
+    padding: 0 20px; /* Optional padding */
+    
 }
+
 
 hr.header-hr{
     border-top: 1px solid grey;
@@ -23,18 +25,28 @@ hr.header-hr{
     width: 40px;
     margin-right:5px;
 }
-.header {
+.header-title {
     margin-top:10px;
     margin-bottom:10px;
-    font-size:10px;
-    font-weight:bold;
+    font-size:20px;
+    font-weight:bold;   
+    padding-left:10px;
 }
 .logindiv{
     margin-top:10px;
     display: flex;
     align-items: center; 
 }
-
+.SearchButton{
+    height:30px;
+    width: auto;
+    padding-left: 8px;
+    padding-right:8px;
+    background-color: #F5F0E5;
+    color:#A1824A;
+    border:none;
+    border-radius:10px;
+}
 .sessionbutton{
     font-size: 14px; 
     background-color: #009963;
