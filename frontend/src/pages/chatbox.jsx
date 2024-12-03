@@ -80,10 +80,17 @@ export function ChatBox() {
     setConversation(prevConversation => [...prevConversation, userMessageEntry]);
     setLoading(true); // Show loading animation
 
+    
+
+    const token = localStorage.getItem('authToken')
+    console.log(token)
     try {
         const response = await fetch('http://localhost:8000/api/chat/', {
             method: 'POST',
-            body: formData, // Send FormData instead of JSON
+            headers:{
+              'Authorization': `Token ${token}`,
+            },
+            body: formData,
         });
 
         const data = await response.json();

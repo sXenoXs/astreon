@@ -5,10 +5,12 @@ import { useState } from "react";
 import "./login.css";
 
 // Function to get CSRF token from the cookies
-function getCSRFToken() {
-  const cookies = document.cookie.split('; ');
-  const csrfCookie = cookies.find(cookie => cookie.startsWith('csrftoken='));
-  return csrfCookie ? csrfCookie.split('=')[1] : null;
+async function fetchCSRFToken(){
+  const response = await fetch('http://127.0.0.1:8000/api/csrf/', {
+    credentials: 'include',
+  });
+  const data = await response.json();
+  return data.csrfToken;
 }
 
 export function Login() {
@@ -32,14 +34,15 @@ export function Login() {
     e.preventDefault();
     setError(null);
 
-    const csrfToken = getCSRFToken();  // Get the CSRF token from the cookie
+    // Get the CSRF token asynchronously
+    const csrfToken = await fetchCSRFToken();
 
     try {
       // POST the login request with CSRF token
       const response = await fetch('http://127.0.0.1:8000/api/dj-rest-auth/login/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json',  // Use 'application/json' for JSON data
           'X-CSRFToken': csrfToken,  // Include the CSRF token in the header
         },
         credentials: 'include',  // Ensure cookies (including CSRF) are sent
@@ -50,6 +53,8 @@ export function Login() {
         })
       });
 
+      
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(
@@ -57,24 +62,17 @@ export function Login() {
           errorData.detail || 
           'Login failed. Please check your credentials.'
         );
+      }else{
+        const data = await response.json();
+        localStorage.setItem('authToken', data.token);
+        window.location.href = '/chatbox'; // Redirect to the chatbox  page after successful login
       }
 
-      const data = await response.json();
-      console.log('Login successful:', data);
-
-      if (data.key) {
-        // Store the authentication token in localStorage
-        localStorage.setItem('token', data.key);
-        window.location.href = '/dashboard'; // Redirect to the dashboard or home page
-      } else {
-        throw new Error('No authentication token received');
-      }
-    } catch (err) {
-      console.error('Login error:', err);
-      setError(err.message);
-    }
-  };
-
+  } catch (err) {
+    console.error('Login error:', err);
+    setError(err.message); // Display the error message on failure
+  }
+};
   return (
     <>
       <Header />

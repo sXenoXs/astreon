@@ -11,7 +11,7 @@ export function Header({ buttons }) {
                 </div>
                 <div className="logindiv">
                     <input className="SearchButton" type="text" placeholder="Search" id="search" name="search" />
-                    <button className="sessionbutton">New Study Session</button>
+                    <button className="sessionbutton">Add to Notebook</button>
                     <a href="#"><img className="iconButton" src="./imgs/svgs/notification.svg" alt="Notification" /></a>
                     <a href="#"><img className="iconButton" src="./imgs/svgs/calendar.svg" alt="Calendar" /></a>
                     <a href="#"><img className="profile" src="./imgs/profile.png" alt="Profile" /></a>
