@@ -50,13 +50,6 @@ class EmailVerification(models.Model):
     def __str__(self):
         return f"{self.email} ({self.user.username})"
 
-class ChatMessage(models.Model):
-    user_message = models.TextField(blank=True, null=True)
-    bot_response = models.TextField(blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"User: {self.user_message}, Bot: {self.bot_response}"
 
 class UploadedImage(models.Model):
     image = models.ImageField(upload_to='images/')
@@ -86,11 +79,35 @@ class UploadedFile(models.Model):
     def __str__(self):
         return f"{self.file_type.capitalize()} - {self.file.name}"
     
+class Notebook(models.Model):
+    name = models.TextField(max_length=255)
+    image_description = models.ForeignKey(UploadedImage, on_delete=models.CASCADE,blank=True,null=True)
+    file_description= models.ForeignKey(UploadedFile, on_delete=models.CASCADE,blank=True,null=True)
+
 
 class Prompt(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,blank=True,null=True) #tracks to the user who made the prompt lull
     user_prompt = models.TextField()  # The text of the user's prompt
     bot_response = models.TextField(null=True, blank=True)  # The bot's response to the prompt
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp of when the prompt was created
 
+
+class Schedule(models.Model):
+    DAYS_OF_WEEK = [
+        ('mon', 'Monday'),
+        ('tue', 'Tuesday'),
+        ('wed', 'Wednesday'),
+        ('thu', 'Thursday'),
+        ('fri', 'Friday'),
+        ('sat', 'Saturday'),
+        ('sun', 'Sunday'),
+    ]
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="schedules")
+    title = models.CharField(max_length=255)
+    day_of_the_week = models.CharField(max_length=3, choices=DAYS_OF_WEEK)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+
     def __str__(self):
-        return f"Prompt: {self.user_prompt[:50]} - Response: {self.bot_response[:50]}"
+        return f"{self.title} on {self.get_day_of_the_week_display()} ({self.start_time})-{self.end_time}"
+
