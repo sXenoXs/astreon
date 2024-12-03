@@ -1,34 +1,36 @@
 from django.shortcuts import render, redirect
+from rest_framework.authtoken.models import Token
 from dj_rest_auth.views import LoginView
 from .serializers import CustomLoginSerializer
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from .forms import ImageUploadForm, DocumentUploadForm, SingleFileUploadForm
-from .models import ChatMessage, UploadedImage, UploadedDocument, UploadedFile
 from mimetypes import guess_type
 from django import forms
 from django.conf import settings
 from django.http import HttpResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import ensure_csrf_cookie
 from dj_rest_auth.views import LoginView
 from .auth_backends import UsernameOrEmailBackend  # Import your custom backend
 import PIL
-import google.generativeai as genai
-import requests
-import re
-import os
-import time
+from rest_framework.views import APIView
+from django.middleware.csrf import get_token
+from django.http import JsonResponse
 
 # Create your views here.
 
 # Custom login view
 def account_inactive_view(request):
     return render(request, 'account_inactive.html', {"message": "Your account is inactive."})
+
+
+def csrf(request):
+    return JsonResponse({'csrfToken': get_token(request)})
 
 # Custom login view
 def verification_complete(request):
@@ -54,11 +56,26 @@ class CustomLoginView(LoginView):
                 return Response({"detail": "This account has been deactivated."}, status=status.HTTP_400_BAD_REQUEST)
             print(f"Authenticating with backend: {user.backend}")  # Debug the backend
             login(request, user, backend='yourapp.auth_backends.UsernameOrEmailBackend')
-            return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
+
+            #creates a token for user authentication
+            token,_ = Token.objects.get_or_create(user=user)
+            return Response(
+                           {"token": token.key}, 
+                            status=status.HTTP_200_OK)
         else:
             print("Authentication failed")  # Add this line to check if the credentials are wrong
             return Response({"detail": "Invalid credentials"}, status=status.HTTP_400_BAD_REQUEST)
-# Custom logout view
+
+
+
+class CustomProtectedView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return Response({"message":f"Hello, {request.user}"})
+        return Response({"message": "Not logged in"})
+
 @csrf_protect  # Ensure CSRF protection is enabled for this view
 def custom_logout(request):
     csrf_token = request.headers.get('X-CSRFToken')
