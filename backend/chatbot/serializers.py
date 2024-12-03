@@ -10,7 +10,7 @@ class UserFileSerializer(serializers.ModelSerializer):
 
 
 class ChatMessageSerializer(serializers.Serializer):
-    message = serializers.CharField(max_length=255)
+    message = serializers.CharField()
     files = serializers.ListField(child=serializers.FileField(required=False, allow_null=True),
     required=False, allow_empty=True)
 
