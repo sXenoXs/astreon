@@ -7,8 +7,8 @@ export function Header({ buttons }){
         
         <header className="header">
         <div className="brand_details">
-          <img src="./imgs/Astreon.png" alt="Astreon Logo" />
-          <span className="brand_details--name">Astreon Study Buddy </span>
+          <img className="icon" src="../../imgs/astreon-icon.jpeg" alt="Astreon Logo" />
+          <span className="brand_details--name">Astreon Study Buddy</span>
         </div>
       
         <ButtonGroup buttons={buttons} />

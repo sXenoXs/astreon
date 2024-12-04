@@ -7,15 +7,16 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    padding: 0 10px; 
+    height:60px;
+    margin-bottom: 2px;
     margin-top:0px;
+
+
 }
 
-.titleheader{
-    margin-top:10px;
-    display: flex;
-    align-items: center; 
-
+hr.header-hr{
+    border-top: 1px solid grey;
+    
 }
 .logo{
     height:40px;
@@ -25,10 +26,8 @@ body{
 .header {
     margin-top:10px;
     margin-bottom:10px;
-    font-size:18px;
+    font-size:10px;
     font-weight:bold;
-    width:400px;
-
 }
 .logindiv{
     margin-top:10px;
@@ -49,8 +48,8 @@ body{
     font-size: 14px; 
     background-color: #009963;
     color: white;
-    padding-top: 8px;
-    padding-bottom:8px;
+    padding-top: 3px;
+    padding-bottom:3px;
     padding-left: 15px;
     padding-right: 15px;
     border:none;
@@ -60,11 +59,11 @@ body{
     margin-left:32px;
     height: 40px;
 }
-.icon{
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-    margin-left:8px;
+.iconButton{
+    height: 30px;
+    width: 30px;
+    margin-left:15px;
+    margin-right:5px;
 }
 .profile{
     height:40px;

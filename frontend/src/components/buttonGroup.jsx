@@ -10,7 +10,6 @@ export function ButtonGroup({ buttons = [] }) {
                     link={button.link}
                     bgColor={button.bgColor}
                     color={button.color}
-                    
                 />
             ))}
         </div>
